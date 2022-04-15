@@ -1,0 +1,25 @@
+{
+    "name": "usox/hypersonic",
+    "type": "library",
+    "require": {
+        "aaronddm/xml-builder": "^2.0",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "mockery/mockery": "^1.5",
+        "phpstan/phpstan": "^1.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Usox\\Hypersonic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Jakob",
+            "email": "github@usox.org"
+        }
+    ]
+}
