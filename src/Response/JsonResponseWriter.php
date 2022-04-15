@@ -22,7 +22,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    public function writeError(ResponseInterface $response, int $errorCode): ResponseInterface
+    public function writeError(ResponseInterface $response, int $errorCode, string $message = ''): ResponseInterface
     {
         $data = [
             'subsonic-response' => [
@@ -30,6 +30,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
                 'version' => '1.16.1',
                 'error' => [
                     'code' => $errorCode,
+                    'message' => $message,
                 ],
             ],
         ];

@@ -10,7 +10,11 @@ interface ResponseWriterInterface
 {
     public function write(ResponseInterface $response): ResponseInterface;
 
-    public function writeError(ResponseInterface $response, int $errorCode): ResponseInterface;
+    public function writeError(
+        ResponseInterface $response,
+        int $errorCode,
+        string $message = ''
+    ): ResponseInterface;
 
     /**
      * @param array{

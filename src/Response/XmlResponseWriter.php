@@ -32,11 +32,11 @@ final class XmlResponseWriter implements ResponseWriterInterface
         return $response->withHeader('Content-Type', 'application/xml');
     }
 
-    public function writeError(ResponseInterface $response, int $errorCode): ResponseInterface
+    public function writeError(ResponseInterface $response, int $errorCode, string $message = ''): ResponseInterface
     {
         $response->getBody()->write(
             '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><subsonic-response xmlns="http://subsonic.org/restapi" status="failed" version="1.16.1">
-                <error code="'.$errorCode.'" />
+                <error code="'.$errorCode.'" message="'.$message.'"/>
             </subsonic-response>'
         );
 

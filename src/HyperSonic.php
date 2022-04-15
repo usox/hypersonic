@@ -6,15 +6,28 @@ namespace Usox\HyperSonic;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Usox\HyperSonic\FeatureSet\V1161\FeatureSetInterface;
+use Usox\HyperSonic\Authentication\AuthenticationManager;
+use Usox\HyperSonic\Authentication\AuthenticationManagerInterface;
+use Usox\HyperSonic\Authentication\AuthenticationProviderInterface;
+use Usox\HyperSonic\Authentication\Exception\AbstractAuthenticationException;
+use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
 use Usox\HyperSonic\Response\ResponseWriterFactory;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 
 final class HyperSonic implements HyperSonicInterface
 {
+    /**
+     * @param array{
+     *  'ping.view'?: callable(Contract\PingDataProviderInterface): callable,
+     *  'getLicense.view'?: callable(Contract\LicenseDataProviderInterface): callable,
+     *  'getArtists.view'?: callable(Contract\ArtistListDataProviderInterface): callable,
+     * } $dataProvider
+     */
     public function __construct(
-        private FeatureSetInterface $featureSet,
+        private FeatureSetFactoryInterface $featureSetFactory,
+        private array $dataProvider,
         private ResponseWriterFactoryInterface $responseWriterFactory,
+        private AuthenticationManagerInterface $authenticationManager,
     ) {
     }
 
@@ -26,8 +39,6 @@ final class HyperSonic implements HyperSonicInterface
         ResponseInterface $response,
         array $args
     ): ResponseInterface {
-        $methods = $this->featureSet->getMethods();
-
         $responseFormat = $request->getQueryParams()['f'] ?? 'xml';
 
         if ($responseFormat === 'xml') {
@@ -36,10 +47,31 @@ final class HyperSonic implements HyperSonicInterface
             $responseWriter = $this->responseWriterFactory->createJsonResponseWriter();
         }
 
+        try {
+            $this->authenticationManager->auth($request);
+        } catch (AbstractAuthenticationException $e) {
+            return $responseWriter->writeError(
+                $response,
+                40,
+                $e->getMessage()
+            );
+        }
+
+        $methods = array_intersect_key(
+            $this->featureSetFactory->createMethodList(),
+            $this->dataProvider
+        );
+
         /** @var callable|null $handler */
         $handler = $methods[$args['methodName']] ?? null;
+
         if ($handler !== null) {
-            call_user_func($handler, $responseWriter, $args);
+            /** @var callable $handler */
+            $dataProvider = $this->dataProvider[$args['methodName']];
+
+            $method = call_user_func($handler, call_user_func($dataProvider));
+
+            call_user_func($method, $responseWriter, $args);
 
             $response = $responseWriter->write($response);
         } else {
@@ -61,11 +93,17 @@ final class HyperSonic implements HyperSonicInterface
     }
 
     public static function init(
-        FeatureSetInterface $featureSet,
+        FeatureSetFactoryInterface $featureSetFactory,
+        AuthenticationProviderInterface $authenticationProvider,
+        array $dataProvider,
     ): self {
         return new self(
-            $featureSet,
+            $featureSetFactory,
+            $dataProvider,
             new ResponseWriterFactory(),
+            new AuthenticationManager(
+                $authenticationProvider,
+            ),
         );
     }
 }

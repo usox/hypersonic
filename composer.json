@@ -13,7 +13,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Usox\\Hypersonic\\": "src/"
+            "Usox\\HyperSonic\\": "src/"
         }
     },
     "authors": [

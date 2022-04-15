@@ -18,8 +18,7 @@ final class GetArtistsMethod
      *  artistImageUrl: string,
      *  albumCount: int,
      *  starred: null|DateTimeInterface
-     * }> $artistList
-     * @param array<string> $ignoredArticles
+     * }> $artistListDataProvider
      */
     public function __construct(
         private ArtistListDataProviderInterface $artistListDataProvider,

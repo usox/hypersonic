@@ -8,8 +8,10 @@ use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistListDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\LicenseDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 
-interface MethodFactoryInterface
+interface FeatureSetFactoryInterface
 {
+    public function createMethodList(): array;
+
     public function createPingMethod(PingDataProviderInterface $pingDataProvider);
 
     public function createGetArtistsMethod(ArtistListDataProviderInterface $artistListDataProvider,);
