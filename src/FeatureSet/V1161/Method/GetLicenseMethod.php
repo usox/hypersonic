@@ -7,7 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\LicenseDataProviderInterface;
 use Usox\HyperSonic\Response\ResponseWriterInterface;
 
-final class GetLicenseMethod
+final class GetLicenseMethod implements V1161MethodInterface
 {
     public function __construct(
         private LicenseDataProviderInterface $licenseDataProvider,

@@ -6,8 +6,11 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Contract;
 
 use DateTimeInterface;
 
-interface ArtistListDataProviderInterface
+interface ArtistListDataProviderInterface extends V1161DataProviderInterface
 {
+    /**
+     * @return array<string>
+     */
     public function getIgnoredArticles(): array;
 
     /**
@@ -20,5 +23,7 @@ interface ArtistListDataProviderInterface
      *  starred: null|DateTimeInterface
      * }>
      */
-    public function getArtists(): iterable;
+    public function getArtists(
+        ?string $musicFolderId
+    ): iterable;
 }

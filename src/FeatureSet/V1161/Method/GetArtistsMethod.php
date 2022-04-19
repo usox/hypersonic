@@ -4,22 +4,11 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 
-use DateTimeInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistListDataProviderInterface;
 use Usox\HyperSonic\Response\ResponseWriterInterface;
 
-final class GetArtistsMethod
+final class GetArtistsMethod implements V1161MethodInterface
 {
-    /**
-     * @param iterable<array{
-     *  id: string,
-     *  name: string,
-     *  coverArtId: string,
-     *  artistImageUrl: string,
-     *  albumCount: int,
-     *  starred: null|DateTimeInterface
-     * }> $artistListDataProvider
-     */
     public function __construct(
         private ArtistListDataProviderInterface $artistListDataProvider,
     ) {
@@ -35,7 +24,13 @@ final class GetArtistsMethod
         $data = [];
         $currentIndex = null;
         $indexItem = [];
-        foreach ($this->artistListDataProvider->getArtists() as $artist) {
+
+        $musicFolderId = $args['musicFolderId'] ?? null;
+        if ($musicFolderId !== null) {
+            $musicFolderId = (string) $musicFolderId;
+        }
+
+        foreach ($this->artistListDataProvider->getArtists($musicFolderId) as $artist) {
             $artistIndex = mb_strtoupper(substr($artist['name'], 0, 1));
 
             if ($artistIndex !== $currentIndex) {

@@ -10,6 +10,9 @@ use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 
 final class FeatureSetFactory implements FeatureSetFactoryInterface
 {
+    /**
+     * @return array<string, callable(Contract\V1161DataProviderInterface): Method\V1161MethodInterface>
+     */
     public function createMethodList(): array
     {
         return [
@@ -24,7 +27,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
 
     public function createPingMethod(
         PingDataProviderInterface $pingDataProvider
-    ) {
+    ): Method\V1161MethodInterface {
         return new Method\PingMethod(
             $pingDataProvider,
         );
@@ -32,7 +35,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
 
     public function createGetArtistsMethod(
         ArtistListDataProviderInterface $artistListDataProvider,
-    ) {
+    ): Method\V1161MethodInterface {
         return new Method\GetArtistsMethod(
             $artistListDataProvider
         );
@@ -40,7 +43,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
 
     public function createGetLicense(
         LicenseDataProviderInterface $licenseDataProvider
-    ) {
+    ): Method\V1161MethodInterface {
         return new Method\GetLicenseMethod(
             $licenseDataProvider,
         );

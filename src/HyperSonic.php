@@ -10,6 +10,7 @@ use Usox\HyperSonic\Authentication\AuthenticationManager;
 use Usox\HyperSonic\Authentication\AuthenticationManagerInterface;
 use Usox\HyperSonic\Authentication\AuthenticationProviderInterface;
 use Usox\HyperSonic\Authentication\Exception\AbstractAuthenticationException;
+use Usox\HyperSonic\Exception\ErrorCodeEnum;
 use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
 use Usox\HyperSonic\Response\ResponseWriterFactory;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
@@ -17,11 +18,7 @@ use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 final class HyperSonic implements HyperSonicInterface
 {
     /**
-     * @param array{
-     *  'ping.view'?: callable(Contract\PingDataProviderInterface): callable,
-     *  'getLicense.view'?: callable(Contract\LicenseDataProviderInterface): callable,
-     *  'getArtists.view'?: callable(Contract\ArtistListDataProviderInterface): callable,
-     * } $dataProvider
+     * @param array<string, callable(): callable> $dataProvider
      */
     public function __construct(
         private FeatureSetFactoryInterface $featureSetFactory,
@@ -39,6 +36,7 @@ final class HyperSonic implements HyperSonicInterface
         ResponseInterface $response,
         array $args
     ): ResponseInterface {
+        // subsonic response format
         $responseFormat = $request->getQueryParams()['f'] ?? 'xml';
 
         if ($responseFormat === 'xml') {
@@ -52,30 +50,36 @@ final class HyperSonic implements HyperSonicInterface
         } catch (AbstractAuthenticationException $e) {
             return $responseWriter->writeError(
                 $response,
-                40,
+                ErrorCodeEnum::WRONG_USERNAME_OR_PASSWORD,
                 $e->getMessage()
             );
         }
 
+        // ensure we filter all existing methods by the really implemented ones
         $methods = array_intersect_key(
             $this->featureSetFactory->createMethodList(),
             $this->dataProvider
         );
 
+        $methodName = $args['methodName'];
+
         /** @var callable|null $handler */
-        $handler = $methods[$args['methodName']] ?? null;
+        $handler = $methods[$methodName] ?? null;
 
         if ($handler !== null) {
             /** @var callable $handler */
-            $dataProvider = $this->dataProvider[$args['methodName']];
+            $dataProvider = $this->dataProvider[$methodName];
 
+            // retrieve handler method callable from method mapping
+            /** @var callable $method */
             $method = call_user_func($handler, call_user_func($dataProvider));
 
+            // execute handler method
             call_user_func($method, $responseWriter, $args);
 
             $response = $responseWriter->write($response);
         } else {
-            $response = $responseWriter->writeError($response, 30);
+            $response = $responseWriter->writeError($response, ErrorCodeEnum::SERVER_VERSION_INCOMPATIBLE);
         }
 
         return $response;
@@ -92,6 +96,9 @@ final class HyperSonic implements HyperSonicInterface
         return call_user_func($this, $request, $response, $args);
     }
 
+    /**
+     * @param array<string, callable(): callable> $dataProvider
+     */
     public static function init(
         FeatureSetFactoryInterface $featureSetFactory,
         AuthenticationProviderInterface $authenticationProvider,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\Response;
 
 use Psr\Http\Message\ResponseInterface;
+use Usox\HyperSonic\Exception\ErrorCodeEnum;
 
 interface ResponseWriterInterface
 {
@@ -12,7 +13,7 @@ interface ResponseWriterInterface
 
     public function writeError(
         ResponseInterface $response,
-        int $errorCode,
+        ErrorCodeEnum $errorCode,
         string $message = ''
     ): ResponseInterface;
 

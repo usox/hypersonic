@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\Response;
 
 use Psr\Http\Message\ResponseInterface;
+use Usox\HyperSonic\Exception\ErrorCodeEnum;
 
 final class JsonResponseWriter implements ResponseWriterInterface
 {
@@ -22,14 +23,14 @@ final class JsonResponseWriter implements ResponseWriterInterface
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    public function writeError(ResponseInterface $response, int $errorCode, string $message = ''): ResponseInterface
+    public function writeError(ResponseInterface $response, ErrorCodeEnum $errorCode, string $message = ''): ResponseInterface
     {
         $data = [
             'subsonic-response' => [
                 'status' => 'failed',
                 'version' => '1.16.1',
                 'error' => [
-                    'code' => $errorCode,
+                    'code' => $errorCode->value,
                     'message' => $message,
                 ],
             ],

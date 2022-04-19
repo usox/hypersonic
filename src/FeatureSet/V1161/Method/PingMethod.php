@@ -8,7 +8,7 @@ use Usox\HyperSonic\Exception\PingFailedException;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 use Usox\HyperSonic\Response\ResponseWriterInterface;
 
-final class PingMethod
+final class PingMethod implements V1161MethodInterface
 {
     public function __construct(
         private PingDataProviderInterface $pingDataProvider

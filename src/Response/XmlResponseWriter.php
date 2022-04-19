@@ -8,6 +8,7 @@ use AaronDDM\XMLBuilder\Writer\XMLWriterService;
 use AaronDDM\XMLBuilder\XMLArray;
 use AaronDDM\XMLBuilder\XMLBuilder;
 use Psr\Http\Message\ResponseInterface;
+use Usox\HyperSonic\Exception\ErrorCodeEnum;
 
 final class XmlResponseWriter implements ResponseWriterInterface
 {
@@ -32,12 +33,26 @@ final class XmlResponseWriter implements ResponseWriterInterface
         return $response->withHeader('Content-Type', 'application/xml');
     }
 
-    public function writeError(ResponseInterface $response, int $errorCode, string $message = ''): ResponseInterface
+    public function writeError(ResponseInterface $response, ErrorCodeEnum $errorCode, string $message = ''): ResponseInterface
     {
+        $this->XMLBuilder->createXMLArray()
+            ->start(
+                'subsonic-response',
+                [
+                    'xmlns' => 'http://subsonic.org/restapi',
+                    'status' => 'failed',
+                    'version' => '1.16.1',
+                ]
+            )
+            ->add(
+                'error',
+                null,
+                ['code' => $errorCode->value, 'message' => $message]
+            )
+            ->end();
+
         $response->getBody()->write(
-            '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><subsonic-response xmlns="http://subsonic.org/restapi" status="failed" version="1.16.1">
-                <error code="'.$errorCode.'" message="'.$message.'"/>
-            </subsonic-response>'
+            $this->XMLBuilder->getXML()
         );
 
         return $response->withHeader('Content-Type', 'application/xml');
