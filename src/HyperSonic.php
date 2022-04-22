@@ -80,7 +80,8 @@ final class HyperSonic implements HyperSonicInterface
 
         if ($handler !== null) {
             /** @var callable $handler */
-            $dataProvider = $this->dataProvider[$methodName];
+            // Retrieve the dataprovider
+            $dataProvider = call_user_func($this->dataProvider[$methodName]);
 
             // retrieve handler method callable from method mapping
             /** @var callable $method */
