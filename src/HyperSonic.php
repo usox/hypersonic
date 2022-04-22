@@ -12,6 +12,7 @@ use Usox\HyperSonic\Authentication\AuthenticationProviderInterface;
 use Usox\HyperSonic\Authentication\Exception\AbstractAuthenticationException;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
 use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
+use Usox\HyperSonic\Response\ResponderInterface;
 use Usox\HyperSonic\Response\ResponseWriterFactory;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 
@@ -32,6 +33,17 @@ final class HyperSonic implements HyperSonicInterface
      * @param array<string, scalar> $args
      */
     public function __invoke(
+        ServerRequestInterface $request,
+        ResponseInterface $response,
+        array $args
+    ): ResponseInterface {
+        return $this->run($request, $response, $args);
+    }
+
+    /**
+     * @param array<string, scalar> $args
+     */
+    public function run(
         ServerRequestInterface $request,
         ResponseInterface $response,
         array $args
@@ -57,7 +69,7 @@ final class HyperSonic implements HyperSonicInterface
 
         // ensure we filter all existing methods by the really implemented ones
         $methods = array_intersect_key(
-            $this->featureSetFactory->createMethodList(),
+            $this->featureSetFactory->getMethods(),
             $this->dataProvider
         );
 
@@ -72,10 +84,11 @@ final class HyperSonic implements HyperSonicInterface
 
             // retrieve handler method callable from method mapping
             /** @var callable $method */
-            $method = call_user_func($handler, call_user_func($dataProvider));
+            $method = call_user_func($handler);
 
             // execute handler method
-            $responder = call_user_func($method, $responseWriter, $args);
+            /** @var ResponderInterface $responder */
+            $responder = call_user_func($method, $responseWriter, $dataProvider, $args);
 
             $response = $responseWriter->write($response, $responder);
         } else {
@@ -83,17 +96,6 @@ final class HyperSonic implements HyperSonicInterface
         }
 
         return $response;
-    }
-
-    /**
-     * @param array<string, scalar> $args
-     */
-    public function run(
-        ServerRequestInterface $request,
-        ResponseInterface $response,
-        array $args
-    ): ResponseInterface {
-        return call_user_func($this, $request, $response, $args);
     }
 
     /**

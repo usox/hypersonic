@@ -14,7 +14,6 @@ final class PingMethod implements V1161MethodInterface
 {
     public function __construct(
         private readonly ResponderFactoryInterface $responderFactory,
-        private readonly PingDataProviderInterface $pingDataProvider
     ) {
     }
 
@@ -23,9 +22,10 @@ final class PingMethod implements V1161MethodInterface
      */
     public function __invoke(
         ResponseWriterInterface $responseWriter,
+        PingDataProviderInterface $dataProvider,
         array $args
     ): ResponderInterface {
-        if (!$this->pingDataProvider->isOk()) {
+        if (!$dataProvider->isOk()) {
             throw new PingFailedException();
         }
 

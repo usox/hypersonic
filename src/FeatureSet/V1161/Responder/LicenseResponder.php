@@ -9,6 +9,13 @@ use Usox\HyperSonic\Response\ResponderInterface;
 
 final class LicenseResponder implements ResponderInterface
 {
+    /**
+     * @param array{
+     *  valid: string,
+     *  email: string,
+     *  licenseExpires: string
+     * } $licenseData
+     */
     public function __construct(
         private readonly array $licenseData
     ) {

@@ -9,6 +9,22 @@ use Usox\HyperSonic\Response\ResponderInterface;
 
 final class ArtistsResponder implements ResponderInterface
 {
+    /**
+     * @param array{
+     *  ignoredArticles: string,
+     *  index: array<array{
+     *    name: string,
+     *    artist: array<array{
+     *      id: string,
+     *      name: string,
+     *      coverArt: string,
+     *      artistImageUrl: string,
+     *      albumCount: int,
+     *      starred?: string
+     *    }>
+     *  }>
+     * } $artistList
+     */
     public function __construct(
         private readonly array $artistList
     ) {

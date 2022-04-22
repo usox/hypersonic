@@ -4,26 +4,16 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161;
 
-use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistListDataProviderInterface;
-use Usox\HyperSonic\FeatureSet\V1161\Contract\LicenseDataProviderInterface;
-use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
-
 interface FeatureSetFactoryInterface
 {
     /**
-     * @return array<string, callable(Contract\V1161DataProviderInterface): Method\V1161MethodInterface>
+     * @return array<string, callable(): Method\V1161MethodInterface>
      */
-    public function createMethodList(): array;
+    public function getMethods(): array;
 
-    public function createPingMethod(
-        PingDataProviderInterface $pingDataProvider
-    ): Method\V1161MethodInterface;
+    public function createPingMethod(): Method\V1161MethodInterface;
 
-    public function createGetArtistsMethod(
-        ArtistListDataProviderInterface $artistListDataProvider
-    ): Method\V1161MethodInterface;
+    public function createGetArtistsMethod(): Method\V1161MethodInterface;
 
-    public function createGetLicense(
-        LicenseDataProviderInterface $licenseDataProvider
-    ): Method\V1161MethodInterface;
+    public function createGetLicense(): Method\V1161MethodInterface;
 }

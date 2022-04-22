@@ -13,7 +13,6 @@ final class GetLicenseMethod implements V1161MethodInterface
 {
     public function __construct(
         private readonly ResponderFactoryInterface $responderFactory,
-        private readonly LicenseDataProviderInterface $licenseDataProvider,
     ) {
     }
 
@@ -22,12 +21,13 @@ final class GetLicenseMethod implements V1161MethodInterface
      */
     public function __invoke(
         ResponseWriterInterface $responseWriter,
+        LicenseDataProviderInterface $licenseDataProvider,
         array $args
     ): ResponderInterface {
         return $this->responderFactory->createLicenseResponder([
-            'valid' => $this->licenseDataProvider->isValid() ? 'true' : 'false',
-            'email' => $this->licenseDataProvider->getEmailAddress(),
-            'licenseExpires' => $this->licenseDataProvider->getExpiryDate()->format(DATE_ATOM),
+            'valid' => $licenseDataProvider->isValid() ? 'true' : 'false',
+            'email' => $licenseDataProvider->getEmailAddress(),
+            'licenseExpires' => $licenseDataProvider->getExpiryDate()->format(DATE_ATOM),
         ]);
     }
 }

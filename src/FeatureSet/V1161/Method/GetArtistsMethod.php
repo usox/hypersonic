@@ -13,7 +13,6 @@ final class GetArtistsMethod implements V1161MethodInterface
 {
     public function __construct(
         private readonly ResponderFactoryInterface $responderFactory,
-        private readonly ArtistListDataProviderInterface $artistListDataProvider,
     ) {
     }
 
@@ -22,6 +21,7 @@ final class GetArtistsMethod implements V1161MethodInterface
      */
     public function __invoke(
         ResponseWriterInterface $responseWriter,
+        ArtistListDataProviderInterface $artistListDataProvider,
         array $args
     ): ResponderInterface {
         $data = [];
@@ -33,7 +33,7 @@ final class GetArtistsMethod implements V1161MethodInterface
             $musicFolderId = (string) $musicFolderId;
         }
 
-        foreach ($this->artistListDataProvider->getArtists($musicFolderId) as $artist) {
+        foreach ($artistListDataProvider->getArtists($musicFolderId) as $artist) {
             $artistIndex = mb_strtoupper(substr($artist['name'], 0, 1));
 
             if ($artistIndex !== $currentIndex) {
@@ -70,7 +70,7 @@ final class GetArtistsMethod implements V1161MethodInterface
 
         return $this->responderFactory->createArtistsResponder(
             [
-                'ignoredArticles' => implode(' ', $this->artistListDataProvider->getIgnoredArticles()),
+                'ignoredArticles' => implode(' ', $artistListDataProvider->getIgnoredArticles()),
                 'index' => $data,
             ]
         );
