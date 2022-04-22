@@ -22,9 +22,15 @@ final class XmlResponseWriter implements ResponseWriterInterface
         $this->XMLBuilder = new XMLBuilder($this->XMLWriterService);
     }
 
-    public function write(ResponseInterface $response): ResponseInterface
-    {
-        $this->getRootNode()->end();
+    public function write(
+        ResponseInterface $response,
+        ResponderInterface $responder,
+    ): ResponseInterface {
+        $rootNode = $this->getRootNode();
+
+        $responder->writeXml($rootNode);
+
+        $rootNode->end();
 
         $response->getBody()->write(
             $this->XMLBuilder->getXML()
@@ -58,49 +64,6 @@ final class XmlResponseWriter implements ResponseWriterInterface
         return $response->withHeader('Content-Type', 'application/xml');
     }
 
-    /**
-     * @param array{
-     *  ignoredArticles: string,
-     *  index: iterable<array{
-     *    name: string,
-     *    artist: array<array{
-     *      id: string,
-     *      name: string,
-     *      coverArt?: string,
-     *      artistImageUrl?: string,
-     *      albumCount: int,
-     *      starred?: string
-     *    }>
-     *  }>
-     * } $artistList
-     */
-    public function writeArtistList(array $artistList): ResponseWriterInterface
-    {
-        $this->getRootNode()->startLoop(
-            'artists',
-            ['ignoredArticles' => $artistList['ignoredArticles']],
-            function (XMLArray $XMLArray) use ($artistList) {
-                foreach ($artistList['index'] as $indexItem) {
-                    $XMLArray->startLoop(
-                        'index',
-                        ['name' => $indexItem['name']],
-                        function (XMLArray $XMLArray) use ($indexItem) {
-                            foreach ($indexItem['artist'] as $artist) {
-                                $XMLArray->add(
-                                    'artist',
-                                    null,
-                                    $artist
-                                );
-                            }
-                        }
-                    );
-                }
-            }
-        );
-
-        return $this;
-    }
-
     private function getRootNode(): XMLArray
     {
         if ($this->rootNode === null) {
@@ -115,16 +78,5 @@ final class XmlResponseWriter implements ResponseWriterInterface
                 );
         }
         return $this->rootNode;
-    }
-
-    public function writeLicense(array $data): ResponseWriterInterface
-    {
-        $this->getRootNode()->add(
-            'license',
-            null,
-            $data
-        );
-
-        return $this;
     }
 }

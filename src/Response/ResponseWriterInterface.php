@@ -9,31 +9,14 @@ use Usox\HyperSonic\Exception\ErrorCodeEnum;
 
 interface ResponseWriterInterface
 {
-    public function write(ResponseInterface $response): ResponseInterface;
+    public function write(
+        ResponseInterface $response,
+        ResponderInterface $responder,
+    ): ResponseInterface;
 
     public function writeError(
         ResponseInterface $response,
         ErrorCodeEnum $errorCode,
         string $message = ''
     ): ResponseInterface;
-
-    /**
-     * @param array{
-     *  ignoredArticles: string,
-     *  index: iterable<array{
-     *    name: string,
-     *    artist: array<array{
-     *      id: string,
-     *      name: string,
-     *      coverArt?: string,
-     *      artistImageUrl?: string,
-     *      albumCount: int,
-     *      starred?: string
-     *    }>
-     *  }>
-     * } $artistList
-     */
-    public function writeArtistList(array $artistList): ResponseWriterInterface;
-
-    public function writeLicense(array $data): ResponseWriterInterface;
 }

@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 
 use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistListDataProviderInterface;
+use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
+use Usox\HyperSonic\Response\ResponderInterface;
 use Usox\HyperSonic\Response\ResponseWriterInterface;
 
 final class GetArtistsMethod implements V1161MethodInterface
 {
     public function __construct(
+        private readonly ResponderFactoryInterface $responderFactory,
         private readonly ArtistListDataProviderInterface $artistListDataProvider,
     ) {
     }
@@ -20,7 +23,7 @@ final class GetArtistsMethod implements V1161MethodInterface
     public function __invoke(
         ResponseWriterInterface $responseWriter,
         array $args
-    ): void {
+    ): ResponderInterface {
         $data = [];
         $currentIndex = null;
         $indexItem = [];
@@ -65,7 +68,7 @@ final class GetArtistsMethod implements V1161MethodInterface
             $data[] = $indexItem;
         }
 
-        $responseWriter->writeArtistList(
+        return $this->responderFactory->createArtistsResponder(
             [
                 'ignoredArticles' => implode(' ', $this->artistListDataProvider->getIgnoredArticles()),
                 'index' => $data,

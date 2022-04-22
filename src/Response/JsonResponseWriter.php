@@ -14,8 +14,12 @@ final class JsonResponseWriter implements ResponseWriterInterface
         'version' => '1.16.1',
     ];
 
-    public function write(ResponseInterface $response): ResponseInterface
-    {
+    public function write(
+        ResponseInterface $response,
+        ResponderInterface $responder
+    ): ResponseInterface {
+        $responder->writeJson($this->root);
+
         $response->getBody()->write(
             json_encode(['subsonic-response' => $this->root], JSON_PRETTY_PRINT)
         );
@@ -41,35 +45,5 @@ final class JsonResponseWriter implements ResponseWriterInterface
         );
 
         return $response->withHeader('Content-Type', 'application/json');
-    }
-
-    public function writeLicense(array $data): ResponseWriterInterface
-    {
-        $this->root['license'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * @param array{
-     *  ignoredArticles: string,
-     *  index: iterable<array{
-     *    name: string,
-     *    artist: array<array{
-     *      id: string,
-     *      name: string,
-     *      coverArt?: string,
-     *      artistImageUrl?: string,
-     *      albumCount: int,
-     *      starred?: string
-     *    }>
-     *  }>
-     * } $artistList
-     */
-    public function writeArtistList(array $artistList): ResponseWriterInterface
-    {
-        $this->root['artists'] = $artistList;
-
-        return $this;
     }
 }

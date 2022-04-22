@@ -75,9 +75,9 @@ final class HyperSonic implements HyperSonicInterface
             $method = call_user_func($handler, call_user_func($dataProvider));
 
             // execute handler method
-            call_user_func($method, $responseWriter, $args);
+            $responder = call_user_func($method, $responseWriter, $args);
 
-            $response = $responseWriter->write($response);
+            $response = $responseWriter->write($response, $responder);
         } else {
             $response = $responseWriter->writeError($response, ErrorCodeEnum::SERVER_VERSION_INCOMPATIBLE);
         }

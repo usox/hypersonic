@@ -7,6 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistListDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\LicenseDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
+use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactory;
 
 final class FeatureSetFactory implements FeatureSetFactoryInterface
 {
@@ -29,6 +30,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
         PingDataProviderInterface $pingDataProvider
     ): Method\V1161MethodInterface {
         return new Method\PingMethod(
+            new ResponderFactory(),
             $pingDataProvider,
         );
     }
@@ -37,6 +39,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
         ArtistListDataProviderInterface $artistListDataProvider,
     ): Method\V1161MethodInterface {
         return new Method\GetArtistsMethod(
+            new ResponderFactory(),
             $artistListDataProvider
         );
     }
@@ -45,6 +48,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
         LicenseDataProviderInterface $licenseDataProvider
     ): Method\V1161MethodInterface {
         return new Method\GetLicenseMethod(
+            new ResponderFactory(),
             $licenseDataProvider,
         );
     }
