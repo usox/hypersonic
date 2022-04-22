@@ -11,7 +11,7 @@ use Usox\HyperSonic\Response\ResponseWriterInterface;
 final class PingMethod implements V1161MethodInterface
 {
     public function __construct(
-        private PingDataProviderInterface $pingDataProvider
+        private readonly PingDataProviderInterface $pingDataProvider
     ) {
     }
 

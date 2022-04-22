@@ -12,7 +12,7 @@ use Usox\HyperSonic\Authentication\Exception\UsernameMissingException;
 final class AuthenticationManager implements AuthenticationManagerInterface
 {
     public function __construct(
-        private AuthenticationProviderInterface $authenticationProvider,
+        private readonly AuthenticationProviderInterface $authenticationProvider,
     ) {
     }
 

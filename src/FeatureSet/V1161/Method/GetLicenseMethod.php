@@ -10,7 +10,7 @@ use Usox\HyperSonic\Response\ResponseWriterInterface;
 final class GetLicenseMethod implements V1161MethodInterface
 {
     public function __construct(
-        private LicenseDataProviderInterface $licenseDataProvider,
+        private readonly LicenseDataProviderInterface $licenseDataProvider,
     ) {
     }
 

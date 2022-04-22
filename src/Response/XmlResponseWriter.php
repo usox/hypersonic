@@ -17,7 +17,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
     private ?XMLArray $rootNode = null;
 
     public function __construct(
-        private XMLWriterService $XMLWriterService,
+        private readonly XMLWriterService $XMLWriterService,
     ) {
         $this->XMLBuilder = new XMLBuilder($this->XMLWriterService);
     }

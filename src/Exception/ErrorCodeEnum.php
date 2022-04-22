@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\Exception;
 
-enum ErrorCodeEnum: int {
+enum ErrorCodeEnum: int
+{
     case GENERIC_ERROR = 0;
     case MISSING_PARAMETER = 10;
     case CLIENT_VERSION_INCOMPATIBLE = 20;

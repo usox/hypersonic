@@ -21,10 +21,10 @@ final class HyperSonic implements HyperSonicInterface
      * @param array<string, callable(): callable> $dataProvider
      */
     public function __construct(
-        private FeatureSetFactoryInterface $featureSetFactory,
-        private array $dataProvider,
-        private ResponseWriterFactoryInterface $responseWriterFactory,
-        private AuthenticationManagerInterface $authenticationManager,
+        private readonly FeatureSetFactoryInterface $featureSetFactory,
+        private readonly array $dataProvider,
+        private readonly ResponseWriterFactoryInterface $responseWriterFactory,
+        private readonly AuthenticationManagerInterface $authenticationManager,
     ) {
     }
 

@@ -6,5 +6,4 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 
 interface V1161MethodInterface
 {
-
 }

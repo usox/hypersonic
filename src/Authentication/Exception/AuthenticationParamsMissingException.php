@@ -6,5 +6,4 @@ namespace Usox\HyperSonic\Authentication\Exception;
 
 final class AuthenticationParamsMissingException extends AbstractAuthenticationException
 {
-
 }

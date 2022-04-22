@@ -10,7 +10,7 @@ use Usox\HyperSonic\Response\ResponseWriterInterface;
 final class GetArtistsMethod implements V1161MethodInterface
 {
     public function __construct(
-        private ArtistListDataProviderInterface $artistListDataProvider,
+        private readonly ArtistListDataProviderInterface $artistListDataProvider,
     ) {
     }
 

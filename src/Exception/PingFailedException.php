@@ -6,5 +6,4 @@ namespace Usox\HyperSonic\Exception;
 
 final class PingFailedException extends SubSonicApiException
 {
-
 }
