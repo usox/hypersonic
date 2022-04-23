@@ -1,6 +1,6 @@
 {
     "name": "usox/hypersonic",
-    "description": "Creates subsonic-api compatible backends",
+    "description": "Creates subsonic-protocol compatible api backends",
     "type": "library",
     "config": {
         "sort-packages": true

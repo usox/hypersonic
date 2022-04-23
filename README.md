@@ -10,6 +10,7 @@ Library for building APIs following the [subsonic](http://www.subsonic.org/) API
 
 ### Prerequisites
 
+- PHP 8.1
 - PSR compliant request-flow (e.g. using a framework like [Slim](https://www.slimframework.com/))
 - Free `/rest/`-route in your application (sadly this can't be changed atm)
 
