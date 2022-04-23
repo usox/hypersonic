@@ -18,6 +18,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
 
     public function __construct(
         private readonly XMLWriterService $XMLWriterService,
+        private readonly string $apiVersion,
     ) {
         $this->XMLBuilder = new XMLBuilder($this->XMLWriterService);
     }
@@ -47,7 +48,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
                 [
                     'xmlns' => 'http://subsonic.org/restapi',
                     'status' => 'failed',
-                    'version' => '1.16.1',
+                    'version' => $this->apiVersion,
                 ]
             )
             ->add(
@@ -73,7 +74,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
                     [
                         'xmlns' => 'http://subsonic.org/restapi',
                         'status' => 'ok',
-                        'version' => '1.16.1',
+                        'version' => $this->apiVersion,
                     ]
                 );
         }

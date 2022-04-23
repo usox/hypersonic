@@ -8,15 +8,20 @@ use AaronDDM\XMLBuilder\Writer\XMLWriterService;
 
 final class ResponseWriterFactory implements ResponseWriterFactoryInterface
 {
-    public function createXmlResponseWriter(): ResponseWriterInterface
-    {
+    public function createXmlResponseWriter(
+        string $apiVersion
+    ): ResponseWriterInterface {
         return new XmlResponseWriter(
-            new XMLWriterService()
+            new XMLWriterService(),
+            $apiVersion,
         );
     }
 
-    public function createJsonResponseWriter(): ResponseWriterInterface
-    {
-        return new JsonResponseWriter();
+    public function createJsonResponseWriter(
+        string $apiVersion
+    ): ResponseWriterInterface {
+        return new JsonResponseWriter(
+            $apiVersion
+        );
     }
 }

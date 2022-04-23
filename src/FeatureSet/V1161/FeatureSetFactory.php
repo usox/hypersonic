@@ -8,6 +8,11 @@ use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactory;
 
 final class FeatureSetFactory implements FeatureSetFactoryInterface
 {
+    public function getVersion(): string
+    {
+        return '1.16.1';
+    }
+
     /**
      * @return array<string, callable(): Method\V1161MethodInterface>
      */

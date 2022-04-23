@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161;
 
-interface FeatureSetFactoryInterface
+use Usox\HyperSonic\FeatureSet\FeatureSetInterface;
+
+interface FeatureSetFactoryInterface extends FeatureSetInterface
 {
     /**
      * @return array<string, callable(): Method\V1161MethodInterface>

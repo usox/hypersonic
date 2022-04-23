@@ -52,9 +52,13 @@ final class HyperSonic implements HyperSonicInterface
         $responseFormat = $request->getQueryParams()['f'] ?? 'xml';
 
         if ($responseFormat === 'xml') {
-            $responseWriter = $this->responseWriterFactory->createXmlResponseWriter();
+            $responseWriter = $this->responseWriterFactory->createXmlResponseWriter(
+                $this->featureSetFactory->getVersion()
+            );
         } else {
-            $responseWriter = $this->responseWriterFactory->createJsonResponseWriter();
+            $responseWriter = $this->responseWriterFactory->createJsonResponseWriter(
+                $this->featureSetFactory->getVersion()
+            );
         }
 
         try {

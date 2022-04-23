@@ -6,7 +6,11 @@ namespace Usox\HyperSonic\Response;
 
 interface ResponseWriterFactoryInterface
 {
-    public function createXmlResponseWriter(): ResponseWriterInterface;
+    public function createXmlResponseWriter(
+        string $apiVersion
+    ): ResponseWriterInterface;
 
-    public function createJsonResponseWriter(): ResponseWriterInterface;
+    public function createJsonResponseWriter(
+        string $apiVersion
+    ): ResponseWriterInterface;
 }

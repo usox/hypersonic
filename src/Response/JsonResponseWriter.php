@@ -9,20 +9,23 @@ use Usox\HyperSonic\Exception\ErrorCodeEnum;
 
 final class JsonResponseWriter implements ResponseWriterInterface
 {
-    /** @var array{status: string, version: string} */
-    private array $root = [
-        'status' => 'ok',
-        'version' => '1.16.1',
-    ];
+    public function __construct(
+        private readonly string $apiVersion
+    ) {
+    }
 
     public function write(
         ResponseInterface $response,
         ResponderInterface $responder
     ): ResponseInterface {
-        $responder->writeJson($this->root);
+        $root = [
+            'status' => 'ok',
+            'version' => $this->apiVersion,
+        ];
+        $responder->writeJson($root);
 
         $response->getBody()->write(
-            (string) json_encode(['subsonic-response' => $this->root], JSON_PRETTY_PRINT)
+            (string) json_encode(['subsonic-response' => $root], JSON_PRETTY_PRINT)
         );
 
         return $response->withHeader('Content-Type', 'application/json');
@@ -36,7 +39,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
         $data = [
             'subsonic-response' => [
                 'status' => 'failed',
-                'version' => '1.16.1',
+                'version' => $this->apiVersion,
                 'error' => [
                     'code' => $errorCode->value,
                     'message' => $message,

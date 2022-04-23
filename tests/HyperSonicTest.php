@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Uxmp\Core;
+namespace Usox\HyperSonic;
 
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
@@ -13,7 +13,6 @@ use Usox\HyperSonic\Authentication\AuthenticationManagerInterface;
 use Usox\HyperSonic\Authentication\Exception\AuthenticationFailedException;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
 use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
-use Usox\HyperSonic\HyperSonic;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 use Usox\HyperSonic\Response\ResponseWriterInterface;
 
@@ -51,6 +50,12 @@ class HyperSonicTest extends MockeryTestCase
         $responseWriter = Mockery::mock(ResponseWriterInterface::class);
 
         $errorMessage = 'some-error';
+        $apiVersion = 'some-version';
+
+        $this->featureSetFactory->shouldReceive('getVersion')
+            ->withNoArgs()
+            ->once()
+            ->andReturn($apiVersion);
 
         $request->shouldReceive('getQueryParams')
             ->withNoArgs()
@@ -58,7 +63,7 @@ class HyperSonicTest extends MockeryTestCase
             ->andReturn([]);
 
         $this->responseWriterFactory->shouldReceive('createXmlResponseWriter')
-            ->withNoArgs()
+            ->with($apiVersion)
             ->once()
             ->andReturn($responseWriter);
 
