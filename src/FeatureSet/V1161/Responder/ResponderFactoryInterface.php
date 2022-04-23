@@ -2,7 +2,6 @@
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
-use DateTimeInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
 
 interface ResponderFactoryInterface
@@ -39,4 +38,9 @@ interface ResponderFactoryInterface
     ): ResponderInterface;
 
     public function createPingResponder(): ResponderInterface;
+
+    public function createCoverArtResponder(
+        string $coverArt,
+        string $contentType,
+    ): ResponderInterface;
 }

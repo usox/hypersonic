@@ -11,7 +11,7 @@ interface ResponseWriterInterface
 {
     public function write(
         ResponseInterface $response,
-        ResponderInterface $responder,
+        FormattedResponderInterface $responder,
     ): ResponseInterface;
 
     public function writeError(

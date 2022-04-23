@@ -12,6 +12,8 @@ use Usox\HyperSonic\Authentication\AuthenticationProviderInterface;
 use Usox\HyperSonic\Authentication\Exception\AbstractAuthenticationException;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
 use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
+use Usox\HyperSonic\Response\BinaryResponderInterface;
+use Usox\HyperSonic\Response\FormattedResponderInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
 use Usox\HyperSonic\Response\ResponseWriterFactory;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
@@ -48,8 +50,10 @@ final class HyperSonic implements HyperSonicInterface
         ResponseInterface $response,
         array $args
     ): ResponseInterface {
+        $queryParams = $request->getQueryParams();
+
         // subsonic response format
-        $responseFormat = $request->getQueryParams()['f'] ?? 'xml';
+        $responseFormat = $queryParams['f'] ?? 'xml';
 
         if ($responseFormat === 'xml') {
             $responseWriter = $this->responseWriterFactory->createXmlResponseWriter(
@@ -93,9 +97,14 @@ final class HyperSonic implements HyperSonicInterface
 
             // execute handler method
             /** @var ResponderInterface $responder */
-            $responder = call_user_func($method, $responseWriter, $dataProvider, $args);
-
-            $response = $responseWriter->write($response, $responder);
+            $responder = call_user_func($method, $responseWriter, $dataProvider, $queryParams, $args);
+            if ($responder->isBinaryResponder()) {
+                /** @var BinaryResponderInterface $responder */
+                $response = $responder->writeResponse($response);
+            } else {
+                /** @var FormattedResponderInterface $responder */
+                $response = $responseWriter->write($response, $responder);
+            }
         } else {
             $response = $responseWriter->writeError($response, ErrorCodeEnum::SERVER_VERSION_INCOMPATIBLE);
         }

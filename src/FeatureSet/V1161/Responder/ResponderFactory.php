@@ -51,4 +51,14 @@ final class ResponderFactory implements ResponderFactoryInterface
     {
         return new PingResponder();
     }
+
+    public function createCoverArtResponder(
+        string $coverArt,
+        string $contentType,
+    ): ResponderInterface {
+        return new CoverArtResponder(
+            $coverArt,
+            $contentType,
+        );
+    }
 }

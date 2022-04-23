@@ -18,4 +18,6 @@ interface FeatureSetFactoryInterface extends FeatureSetInterface
     public function createGetArtistsMethod(): Method\V1161MethodInterface;
 
     public function createGetLicense(): Method\V1161MethodInterface;
+
+    public function createGetCoverArtMethod(): Method\V1161MethodInterface;
 }

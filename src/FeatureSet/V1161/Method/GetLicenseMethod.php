@@ -17,11 +17,13 @@ final class GetLicenseMethod implements V1161MethodInterface
     }
 
     /**
+     * @param array<string, scalar> $queryParams
      * @param array<string, scalar> $args
      */
     public function __invoke(
         ResponseWriterInterface $responseWriter,
         LicenseDataProviderInterface $licenseDataProvider,
+        array $queryParams,
         array $args
     ): ResponderInterface {
         return $this->responderFactory->createLicenseResponder([

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
 use AaronDDM\XMLBuilder\XMLArray;
-use Usox\HyperSonic\Response\ResponderInterface;
+use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class LicenseResponder implements ResponderInterface
+final class LicenseResponder implements FormattedResponderInterface
 {
     /**
      * @param array{
@@ -33,5 +33,10 @@ final class LicenseResponder implements ResponderInterface
     public function writeJson(array &$root): void
     {
         $root['license'] = $this->licenseData;
+    }
+
+    public function isBinaryResponder(): bool
+    {
+        return false;
     }
 }

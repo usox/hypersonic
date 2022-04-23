@@ -17,12 +17,14 @@ final class GetArtistsMethod implements V1161MethodInterface
     }
 
     /**
+     * @param array<string, scalar> $queryParams
      * @param array<string, scalar> $args
      */
     public function __invoke(
         ResponseWriterInterface $responseWriter,
         ArtistListDataProviderInterface $artistListDataProvider,
-        array $args
+        array $queryParams,
+        array $args,
     ): ResponderInterface {
         $data = [];
         $currentIndex = null;

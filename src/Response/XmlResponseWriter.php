@@ -25,7 +25,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
 
     public function write(
         ResponseInterface $response,
-        ResponderInterface $responder,
+        FormattedResponderInterface $responder,
     ): ResponseInterface {
         $rootNode = $this->getRootNode();
 

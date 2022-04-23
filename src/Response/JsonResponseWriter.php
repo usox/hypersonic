@@ -16,7 +16,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
 
     public function write(
         ResponseInterface $response,
-        ResponderInterface $responder
+        FormattedResponderInterface $responder
     ): ResponseInterface {
         $root = [
             'status' => 'ok',
