@@ -46,7 +46,7 @@ final class AuthenticationManager implements AuthenticationManagerInterface
         $password = $queryParams['p'] ?? null;
 
         if ($password !== null) {
-            if (str_starts_with('enc:', $password)) {
+            if (str_starts_with($password, 'enc:')) {
                 $password = hex2bin(str_replace('enc:', '', $password));
             }
 
