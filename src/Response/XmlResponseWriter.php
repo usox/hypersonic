@@ -4,25 +4,27 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\Response;
 
-use AaronDDM\XMLBuilder\Writer\XMLWriterService;
 use AaronDDM\XMLBuilder\XMLArray;
 use AaronDDM\XMLBuilder\XMLBuilder;
 use Psr\Http\Message\ResponseInterface;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
 
+/**
+ * Writes response data in xml format
+ */
 final class XmlResponseWriter implements ResponseWriterInterface
 {
-    private XMLBuilder $XMLBuilder;
-
     private ?XMLArray $rootNode = null;
 
     public function __construct(
-        private readonly XMLWriterService $XMLWriterService,
+        private readonly XMLBuilder $xmlBuilder,
         private readonly string $apiVersion,
     ) {
-        $this->XMLBuilder = new XMLBuilder($this->XMLWriterService);
     }
 
+    /**
+     * Write response for successful api requests
+     */
     public function write(
         ResponseInterface $response,
         FormattedResponderInterface $responder,
@@ -33,16 +35,18 @@ final class XmlResponseWriter implements ResponseWriterInterface
 
         $rootNode->end();
 
-        $response->getBody()->write(
-            $this->XMLBuilder->getXML()
-        );
-
-        return $response->withHeader('Content-Type', 'application/xml');
+        return $this->writeToResponse($response);
     }
 
-    public function writeError(ResponseInterface $response, ErrorCodeEnum $errorCode, string $message = ''): ResponseInterface
-    {
-        $this->XMLBuilder->createXMLArray()
+    /**
+     * Write response for erroneous api requests
+     */
+    public function writeError(
+        ResponseInterface $response,
+        ErrorCodeEnum $errorCode,
+        string $message = ''
+    ): ResponseInterface {
+        $this->xmlBuilder->createXMLArray()
             ->start(
                 'subsonic-response',
                 [
@@ -58,8 +62,14 @@ final class XmlResponseWriter implements ResponseWriterInterface
             )
             ->end();
 
+        return $this->writeToResponse($response);
+    }
+
+    private function writeToResponse(
+        ResponseInterface $response
+    ): ResponseInterface {
         $response->getBody()->write(
-            $this->XMLBuilder->getXML()
+            $this->xmlBuilder->getXML()
         );
 
         return $response->withHeader('Content-Type', 'application/xml');
@@ -68,7 +78,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
     private function getRootNode(): XMLArray
     {
         if ($this->rootNode === null) {
-            $this->rootNode = $this->XMLBuilder->createXMLArray()
+            $this->rootNode = $this->xmlBuilder->createXMLArray()
                 ->start(
                     'subsonic-response',
                     [

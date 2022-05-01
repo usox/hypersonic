@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\Response;
 
 use AaronDDM\XMLBuilder\Writer\XMLWriterService;
+use AaronDDM\XMLBuilder\XMLBuilder;
 
 final class ResponseWriterFactory implements ResponseWriterFactoryInterface
 {
@@ -12,7 +13,9 @@ final class ResponseWriterFactory implements ResponseWriterFactoryInterface
         string $apiVersion
     ): ResponseWriterInterface {
         return new XmlResponseWriter(
-            new XMLWriterService(),
+            new XMLBuilder(
+                new XMLWriterService()
+            ),
             $apiVersion,
         );
     }

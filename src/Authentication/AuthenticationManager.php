@@ -9,6 +9,9 @@ use Usox\HyperSonic\Authentication\Exception\AbstractAuthenticationException;
 use Usox\HyperSonic\Authentication\Exception\AuthenticationParamsMissingException;
 use Usox\HyperSonic\Authentication\Exception\UsernameMissingException;
 
+/**
+ * Manages the authentication of subsonic api requests
+ */
 final class AuthenticationManager implements AuthenticationManagerInterface
 {
     public function __construct(
@@ -17,6 +20,8 @@ final class AuthenticationManager implements AuthenticationManagerInterface
     }
 
     /**
+     * Will throw an exception on auth fault, otherwise nothing will happen
+     *
      * @throws AbstractAuthenticationException
      */
     public function auth(

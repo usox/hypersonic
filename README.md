@@ -59,7 +59,7 @@ $app->get('/rest/{methodName}', $hyperSonic);
 
 The subsonic protocol is somewhat sloppy when it comes to security.
 Prior to version `1.13.0`, the protocol expects the username and the password to be sent as part of the query string -
-the password itself is either transferred as cleartext or hex-encoded.
+the password itself is either transferred as plaintext or hex-encoded.
 
 Starting with `1.13.0` the protocol added support for access-tokens - a md5 hash consisting of the password and a salt
 (which also gets added to the query params).
@@ -76,7 +76,7 @@ Also consider not to implement methods which may have access to sensible data an
 
 The `AuthenticationProviderInterface` expects two methods to be implemented, one for the token auth and the second for username+password auth.
 
-To check against the token, use the users api key (or the _cleartext_ user password for god’s sake), append the salt and md5-hash it.
+To check against the token, use the users api key (or the _plaintext_ user password for god’s sake), append the salt and md5-hash it.
 
 ### Protocol-Versions
 

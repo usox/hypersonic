@@ -6,6 +6,9 @@ namespace Usox\HyperSonic\FeatureSet\V1161;
 
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactory;
 
+/**
+ * Provides the  methods for all subsonic 1.16.1 features
+ */
 final class FeatureSetFactory implements FeatureSetFactoryInterface
 {
     public function getVersion(): string
@@ -20,7 +23,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
     {
         return [
             'ping.view' => fn (): Method\V1161MethodInterface => $this->createPingMethod(),
-            'getLicense.view' => fn (): Method\V1161MethodInterface => $this->createGetLicense(),
+            'getLicense.view' => fn (): Method\V1161MethodInterface => $this->createGetLicenseMethod(),
             'getArtists.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistsMethod(),
             'getCoverArt.view' => fn (): Method\V1161MethodInterface => $this->createGetCoverArtMethod(),
         ];
@@ -40,7 +43,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
         );
     }
 
-    public function createGetLicense(): Method\V1161MethodInterface
+    public function createGetLicenseMethod(): Method\V1161MethodInterface
     {
         return new Method\GetLicenseMethod(
             new ResponderFactory(),
