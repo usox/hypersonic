@@ -8,7 +8,6 @@ use Usox\HyperSonic\Exception\PingFailedException;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
-use Usox\HyperSonic\Response\ResponseWriterInterface;
 
 final class PingMethod implements V1161MethodInterface
 {
@@ -22,7 +21,6 @@ final class PingMethod implements V1161MethodInterface
      * @param array<string, scalar> $args
      */
     public function __invoke(
-        ResponseWriterInterface $responseWriter,
         PingDataProviderInterface $dataProvider,
         array $queryParams,
         array $args

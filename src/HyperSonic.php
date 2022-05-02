@@ -97,7 +97,7 @@ final class HyperSonic implements HyperSonicInterface
 
             // execute handler method
             /** @var ResponderInterface $responder */
-            $responder = call_user_func($method, $responseWriter, $dataProvider, $queryParams, $args);
+            $responder = call_user_func($method, $dataProvider, $queryParams, $args);
             if ($responder->isBinaryResponder()) {
                 /** @var BinaryResponderInterface $responder */
                 $response = $responder->writeResponse($response);

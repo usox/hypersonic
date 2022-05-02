@@ -7,7 +7,6 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistListDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
-use Usox\HyperSonic\Response\ResponseWriterInterface;
 
 final class GetArtistsMethod implements V1161MethodInterface
 {
@@ -21,7 +20,6 @@ final class GetArtistsMethod implements V1161MethodInterface
      * @param array<string, scalar> $args
      */
     public function __invoke(
-        ResponseWriterInterface $responseWriter,
         ArtistListDataProviderInterface $artistListDataProvider,
         array $queryParams,
         array $args,

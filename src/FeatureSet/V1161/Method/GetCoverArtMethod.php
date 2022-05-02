@@ -7,7 +7,6 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\GetCoverArtDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
-use Usox\HyperSonic\Response\ResponseWriterInterface;
 
 final class GetCoverArtMethod implements V1161MethodInterface
 {
@@ -21,7 +20,6 @@ final class GetCoverArtMethod implements V1161MethodInterface
      * @param array<string, scalar> $args
      */
     public function __invoke(
-        ResponseWriterInterface $responseWriter,
         GetCoverArtDataProviderInterface $getCoverArtDataProvider,
         array $queryParams,
         array $args
