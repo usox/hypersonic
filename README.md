@@ -1,6 +1,8 @@
 # hypersonic
 
 [![Unittests](https://github.com/usox/hypersonic/actions/workflows/php.yml/badge.svg)](https://github.com/usox/hypersonic/actions/workflows/php.yml)
+[![Code Coverage](https://scrutinizer-ci.com/g/usox/hypersonic/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/usox/hypersonic/?branch=main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/usox/hypersonic/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/usox/hypersonic/?branch=main)
 
 Library for building APIs following the [subsonic](http://www.subsonic.org/) API definitions.
 
