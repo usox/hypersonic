@@ -86,10 +86,11 @@ Please see the official [subsonic api documentation](http://www.subsonic.org/pag
 
 #### 1.16.1 - Currently supported methods
 
-- ping.view
 - getArtists.view
-- getLicense.view
+- getArtist.view
 - getCoverArt.view
+- getLicense.view
+- ping.view
 
 
 

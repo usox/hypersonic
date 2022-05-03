@@ -22,6 +22,7 @@ class ResponderFactoryTest extends MockeryTestCase
             ['createLicenseResponder', LicenseResponder::class, [[]]],
             ['createPingResponder', PingResponder::class, []],
             ['createCoverArtResponder', CoverArtResponder::class, ['cover-art', 'content-type']],
+            ['createArtistResponder', ArtistResponder::class, [['artist'], ['albums']]],
         ];
     }
 

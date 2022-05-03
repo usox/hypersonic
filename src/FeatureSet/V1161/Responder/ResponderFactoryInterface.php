@@ -43,4 +43,31 @@ interface ResponderFactoryInterface
         string $coverArt,
         string $contentType,
     ): ResponderInterface;
+
+    /**
+     * @param array{
+     *  id: string,
+     *  name: string,
+     *  coverArt: string,
+     *  albumCount: int,
+     *  artistImageUrl: string,
+     * } $artist
+     * @param array<array{
+     *  id: string,
+     *  name: string,
+     *  coverArt: string,
+     *  songCount: int,
+     *  created: string,
+     *  duration: int,
+     *  artist: string,
+     *  artistId: string,
+     *  year: string,
+     *  genre: string,
+     *  playCount: int
+     * }> $albums
+     */
+    public function createArtistResponder(
+        array $artist,
+        array $albums,
+    ): ResponderInterface;
 }
