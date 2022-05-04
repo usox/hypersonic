@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
-use DateTimeInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
 
 final class ResponderFactory implements ResponderFactoryInterface

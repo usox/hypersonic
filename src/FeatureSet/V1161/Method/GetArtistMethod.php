@@ -10,6 +10,11 @@ use Usox\HyperSonic\FeatureSet\V1161\Contract\ArtistDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
 
+/**
+ * Retrieves and transforms data for a single artist
+ *
+ * This class covers the `getArtist.view` method
+ */
 final class GetArtistMethod implements V1161MethodInterface
 {
     public function __construct(

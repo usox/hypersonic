@@ -88,7 +88,7 @@ final class HyperSonic implements HyperSonicInterface
 
         if ($handler !== null) {
             /** @var callable $handler */
-            // Retrieve the dataprovider
+            // Retrieve the data provider
             $dataProvider = call_user_func($this->dataProvider[$methodName]);
 
             // retrieve handler method callable from method mapping
@@ -113,6 +113,12 @@ final class HyperSonic implements HyperSonicInterface
     }
 
     /**
+     * Create a hypersonic instance
+     *
+     * Exepcts a list of so called `data providers` which consists
+     * of a key (the method name) and a callable which creates the
+     * data provider. See documentation
+     *
      * @param array<string, callable(): callable> $dataProvider
      */
     public static function init(

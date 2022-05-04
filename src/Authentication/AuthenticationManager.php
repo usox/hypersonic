@@ -38,6 +38,7 @@ final class AuthenticationManager implements AuthenticationManagerInterface
         $token = $queryParams['t'] ?? null;
         $salt = $queryParams['s'] ?? null;
 
+        // token auth? phew, thank god
         if ($token !== null && $salt !== null) {
             $this->authenticationProvider->authByToken(
                 (string) $userName,
@@ -50,6 +51,7 @@ final class AuthenticationManager implements AuthenticationManagerInterface
 
         $password = $queryParams['p'] ?? null;
 
+        // meh, plaintext or hex-encoded password
         if ($password !== null) {
             if (str_starts_with($password, 'enc:')) {
                 $password = hex2bin(str_replace('enc:', '', $password));
@@ -63,6 +65,7 @@ final class AuthenticationManager implements AuthenticationManagerInterface
             return;
         }
 
+        // no auth method applies? throw exception
         throw new AuthenticationParamsMissingException();
     }
 }

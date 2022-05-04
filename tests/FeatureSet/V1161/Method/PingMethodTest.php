@@ -7,7 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\MockInterface;
-use Usox\HyperSonic\Exception\PingFailedException;
+use Usox\HyperSonic\Exception\MethodCallFailedException;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
@@ -29,7 +29,7 @@ class PingMethodTest extends MockeryTestCase
 
     public function testInvokeThrowsExceptionIfPingFails(): void
     {
-        $this->expectException(PingFailedException::class);
+        $this->expectException(MethodCallFailedException::class);
 
         $dataProvider = Mockery::mock(PingDataProviderInterface::class);
 

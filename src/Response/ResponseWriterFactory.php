@@ -7,6 +7,9 @@ namespace Usox\HyperSonic\Response;
 use AaronDDM\XMLBuilder\Writer\XMLWriterService;
 use AaronDDM\XMLBuilder\XMLBuilder;
 
+/**
+ * Create the response writes classes depending on the requested format
+ */
 final class ResponseWriterFactory implements ResponseWriterFactoryInterface
 {
     public function createXmlResponseWriter(

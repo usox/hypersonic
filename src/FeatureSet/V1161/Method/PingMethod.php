@@ -4,11 +4,18 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 
-use Usox\HyperSonic\Exception\PingFailedException;
+use Usox\HyperSonic\Exception\ErrorCodeEnum;
+use Usox\HyperSonic\Exception\MethodCallFailedException;
+use Usox\HyperSonic\Exception\SubSonicApiException;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
 
+/**
+ * Retrieves and transforms data related to the servers state
+ *
+ * This class covers the `ping.view` method
+ */
 final class PingMethod implements V1161MethodInterface
 {
     public function __construct(
@@ -19,6 +26,8 @@ final class PingMethod implements V1161MethodInterface
     /**
      * @param array<string, scalar> $queryParams
      * @param array<string, scalar> $args
+     *
+     * @throws SubSonicApiException
      */
     public function __invoke(
         PingDataProviderInterface $dataProvider,
@@ -26,7 +35,7 @@ final class PingMethod implements V1161MethodInterface
         array $args
     ): ResponderInterface {
         if (!$dataProvider->isOk()) {
-            throw new PingFailedException();
+            throw new MethodCallFailedException(ErrorCodeEnum::GENERIC_ERROR);
         }
 
         return $this->responderFactory->createPingResponder();

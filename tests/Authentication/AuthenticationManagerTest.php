@@ -87,7 +87,7 @@ class AuthenticationManagerTest extends MockeryTestCase
         $this->subject->auth($request);
     }
 
-    public function testAuthThrowxExceptionIfNoAuthMethodApplies(): void
+    public function testAuthThrowsExceptionIfNoAuthMethodApplies(): void
     {
         $this->expectException(AuthenticationParamsMissingException::class);
 

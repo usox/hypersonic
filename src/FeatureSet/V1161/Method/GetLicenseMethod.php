@@ -8,6 +8,11 @@ use Usox\HyperSonic\FeatureSet\V1161\Contract\LicenseDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
 
+/**
+ * Retrieves and transforms data related to the license state of the server
+ *
+ * This class covers the `getLicense.view` method
+ */
 final class GetLicenseMethod implements V1161MethodInterface
 {
     public function __construct(

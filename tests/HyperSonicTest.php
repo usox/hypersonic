@@ -15,17 +15,13 @@ use Usox\HyperSonic\Authentication\Exception\AuthenticationFailedException;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\PingDataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
-use Usox\HyperSonic\FeatureSet\V1161\Method\V1161MethodInterface;
 use Usox\HyperSonic\Response\BinaryResponderInterface;
-use Usox\HyperSonic\Response\ResponderInterface;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 use Usox\HyperSonic\Response\ResponseWriterInterface;
 
 class HyperSonicTest extends MockeryTestCase
 {
     private MockInterface $featureSetFactory;
-
-    private array $dataProvider;
 
     private MockInterface $responseWriterFactory;
 
@@ -42,7 +38,7 @@ class HyperSonicTest extends MockeryTestCase
 
         $this->subject = new HyperSonic(
             $this->featureSetFactory,
-            $this->dataProvider,
+            [],
             $this->responseWriterFactory,
             $this->authenticationManager,
         );
