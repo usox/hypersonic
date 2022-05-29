@@ -23,6 +23,7 @@ class ResponderFactoryTest extends MockeryTestCase
             ['createPingResponder', PingResponder::class, []],
             ['createCoverArtResponder', CoverArtResponder::class, ['cover-art', 'content-type']],
             ['createArtistResponder', ArtistResponder::class, [['artist'], ['albums']]],
+            ['createGenresResponder', GenresResponder::class, [['genres']]],
         ];
     }
 

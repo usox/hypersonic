@@ -90,4 +90,19 @@ final class ResponderFactory implements ResponderFactoryInterface
     ): ResponderInterface {
         return new ArtistResponder($artist, $albums);
     }
+
+    /**
+     * @param array<array{
+     *  value: string,
+     *  albumCount: int,
+     *  songCount: int
+     * }> $genres
+     */
+    public function createGenresResponder(
+        array $genres,
+    ): ResponderInterface {
+        return new GenresResponder(
+            $genres
+        );
+    }
 }

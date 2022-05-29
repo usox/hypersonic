@@ -70,4 +70,15 @@ interface ResponderFactoryInterface
         array $artist,
         array $albums,
     ): ResponderInterface;
+
+    /**
+     * @param array<array{
+     *  value: string,
+     *  albumCount: int,
+     *  songCount: int
+     * }> $genres
+     */
+    public function createGenresResponder(
+        array $genres,
+    ): ResponderInterface;
 }

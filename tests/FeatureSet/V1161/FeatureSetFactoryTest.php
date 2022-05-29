@@ -31,6 +31,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
             ['getArtists.view', Method\GetArtistsMethod::class],
             ['getCoverArt.view', Method\GetCoverArtMethod::class],
             ['getArtist.view', Method\GetArtistMethod::class],
+            ['getGenres.view', Method\GetGenresMethod::class],
         ];
     }
 

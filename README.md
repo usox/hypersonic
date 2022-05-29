@@ -89,6 +89,7 @@ Please see the official [subsonic api documentation](http://www.subsonic.org/pag
 - getArtists.view
 - getArtist.view
 - getCoverArt.view
+- getGenres.view
 - getLicense.view
 - ping.view
 
