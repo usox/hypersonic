@@ -49,6 +49,7 @@ final class AuthenticationManager implements AuthenticationManagerInterface
             return;
         }
 
+        /** @var null|string $password */
         $password = $queryParams['p'] ?? null;
 
         // meh, plaintext or hex-encoded password
