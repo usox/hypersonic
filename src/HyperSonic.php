@@ -115,7 +115,7 @@ final class HyperSonic implements HyperSonicInterface
     /**
      * Create a hypersonic instance
      *
-     * Exepcts a list of so called `data providers` which consists
+     * Expects a list of so called `data providers` which consists
      * of a key (the method name) and a callable which creates the
      * data provider. See documentation
      *
