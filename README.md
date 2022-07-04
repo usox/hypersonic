@@ -91,6 +91,7 @@ Please see the official [subsonic api documentation](http://www.subsonic.org/pag
 - getCoverArt.view
 - getGenres.view
 - getLicense.view
+- getMusicFolders.view
 - ping.view
 
 

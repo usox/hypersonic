@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
+use ArrayIterator;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 class ResponderFactoryTest extends MockeryTestCase
@@ -24,6 +25,7 @@ class ResponderFactoryTest extends MockeryTestCase
             ['createCoverArtResponder', CoverArtResponder::class, ['cover-art', 'content-type']],
             ['createArtistResponder', ArtistResponder::class, [['artist'], ['albums']]],
             ['createGenresResponder', GenresResponder::class, [['genres']]],
+            ['createMusicFoldersResponder', MusicFoldersResponder::class, [new ArrayIterator(['folders'])]],
         ];
     }
 

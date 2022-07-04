@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
+use Traversable;
 use Usox\HyperSonic\Response\ResponderInterface;
 
 final class ResponderFactory implements ResponderFactoryInterface
@@ -103,6 +104,20 @@ final class ResponderFactory implements ResponderFactoryInterface
     ): ResponderInterface {
         return new GenresResponder(
             $genres
+        );
+    }
+
+    /**
+     * @param Traversable<array{
+     *  name: string,
+     *  id: string
+     * }> $musicFolders
+     */
+    public function createMusicFoldersResponder(
+        Traversable $musicFolders
+    ): ResponderInterface {
+        return new MusicFoldersResponder(
+            $musicFolders
         );
     }
 }
