@@ -2,6 +2,7 @@
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
+use Psr\Http\Message\StreamInterface;
 use Traversable;
 use Usox\HyperSonic\Response\ResponderInterface;
 
@@ -124,5 +125,16 @@ interface ResponderFactoryInterface
      */
     public function createMusicFoldersResponder(
         Traversable $musicFolders
+    ): ResponderInterface;
+
+    /**
+     * @param array{
+     *  contentType: string,
+     *  length: int,
+     *  stream: StreamInterface,
+     * } $streamData
+     */
+    public function createStreamResponder(
+        array $streamData,
     ): ResponderInterface;
 }

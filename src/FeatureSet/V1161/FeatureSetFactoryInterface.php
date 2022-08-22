@@ -28,4 +28,6 @@ interface FeatureSetFactoryInterface extends FeatureSetInterface
     public function createGetMusicFoldersMethod(): Method\V1161MethodInterface;
 
     public function createGetAlbumMethod(): Method\V1161MethodInterface;
+
+    public function createStreamMethod(): Method\V1161MethodInterface;
 }

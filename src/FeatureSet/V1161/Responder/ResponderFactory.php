@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
+use Psr\Http\Message\StreamInterface;
 use Traversable;
 use Usox\HyperSonic\Response\ResponderInterface;
 
@@ -156,6 +157,21 @@ final class ResponderFactory implements ResponderFactoryInterface
     ): ResponderInterface {
         return new MusicFoldersResponder(
             $musicFolders
+        );
+    }
+
+    /**
+     * @param array{
+     *  contentType: string,
+     *  length: int,
+     *  stream: StreamInterface,
+     * } $streamData
+     */
+    public function createStreamResponder(
+        array $streamData,
+    ): ResponderInterface {
+        return new StreamResponder(
+            $streamData,
         );
     }
 }
