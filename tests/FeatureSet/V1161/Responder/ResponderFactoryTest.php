@@ -19,6 +19,7 @@ class ResponderFactoryTest extends MockeryTestCase
     public function responderDataProvider(): array
     {
         return [
+            ['createAlbumResponder', AlbumResponder::class, [['album'], ['songs']]],
             ['createArtistsResponder', ArtistsResponder::class, [[]]],
             ['createLicenseResponder', LicenseResponder::class, [[]]],
             ['createPingResponder', PingResponder::class, []],

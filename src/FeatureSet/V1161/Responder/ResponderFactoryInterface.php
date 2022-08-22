@@ -73,6 +73,39 @@ interface ResponderFactoryInterface
     ): ResponderInterface;
 
     /**
+     * @param array{
+     *  id: string,
+     *  name: string,
+     *  coverArt: string,
+     *  songCount: int,
+     *  created: string,
+     *  duration: int,
+     *  artist: string,
+     *  artistId: string,
+     * } $album
+     * @param array<array{
+     *  id: string,
+     *  isDir: bool,
+     *  title: string,
+     *  album: string,
+     *  artist: string,
+     *  track: int,
+     *  coverArt: string,
+     *  size: int,
+     *  contentType: string,
+     *  duration: int,
+     *  created: string,
+     *  albumId: string,
+     *  artistId: string,
+     *  playCount: int,
+     * }> $songs
+     */
+    public function createAlbumResponder(
+        array $album,
+        array $songs,
+    ): ResponderInterface;
+
+    /**
      * @param array<array{
      *  value: string,
      *  albumCount: int,

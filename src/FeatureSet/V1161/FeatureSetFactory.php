@@ -24,6 +24,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
         return [
             'ping.view' => fn (): Method\V1161MethodInterface => $this->createPingMethod(),
             'getLicense.view' => fn (): Method\V1161MethodInterface => $this->createGetLicenseMethod(),
+            'getAlbum.view' => fn (): Method\V1161MethodInterface => $this->createGetAlbumMethod(),
             'getArtists.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistsMethod(),
             'getCoverArt.view' => fn (): Method\V1161MethodInterface => $this->createGetCoverArtMethod(),
             'getArtist.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistMethod(),
@@ -77,6 +78,13 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
     public function createGetMusicFoldersMethod(): Method\V1161MethodInterface
     {
         return new Method\GetMusicFoldersMethod(
+            new ResponderFactory()
+        );
+    }
+
+    public function createGetAlbumMethod(): Method\V1161MethodInterface
+    {
+        return new Method\GetAlbumMethod(
             new ResponderFactory()
         );
     }
