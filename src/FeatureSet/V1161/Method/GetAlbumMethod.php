@@ -56,24 +56,22 @@ final class GetAlbumMethod implements V1161MethodInterface
             ],
             array_values(
                 array_map(
-                    function (array $song): array {
-                        return [
-                            'id' => $song['id'],
-                            'isDir' => $song['isDir'],
-                            'title' => $song['name'],
-                            'album' => $song['albumName'],
-                            'artist' => $song['artistName'],
-                            'track' => $song['trackNumber'],
-                            'coverArt' => $song['coverArtId'],
-                            'size' => $song['size'],
-                            'contentType' => $song['contentType'],
-                            'duration' => $song['duration'],
-                            'created' => $song['createDate']->format(DATE_ATOM),
-                            'albumId' => $song['albumId'],
-                            'artistId' => $song['artistId'],
-                            'playCount' => $song['playCount'],
-                        ];
-                    },
+                    fn(array $song): array => [
+                        'id' => $song['id'],
+                        'isDir' => $song['isDir'],
+                        'title' => $song['name'],
+                        'album' => $song['albumName'],
+                        'artist' => $song['artistName'],
+                        'track' => $song['trackNumber'],
+                        'coverArt' => $song['coverArtId'],
+                        'size' => $song['size'],
+                        'contentType' => $song['contentType'],
+                        'duration' => $song['duration'],
+                        'created' => $song['createDate']->format(DATE_ATOM),
+                        'albumId' => $song['albumId'],
+                        'artistId' => $song['artistId'],
+                        'playCount' => $song['playCount'],
+                    ],
                     $album['songs']
                 )
             )
