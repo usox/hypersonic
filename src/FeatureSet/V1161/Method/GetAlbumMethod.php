@@ -56,7 +56,7 @@ final class GetAlbumMethod implements V1161MethodInterface
             ],
             array_values(
                 array_map(
-                    fn(array $song): array => [
+                    fn (array $song): array => [
                         'id' => $song['id'],
                         'isDir' => $song['isDir'],
                         'title' => $song['name'],
