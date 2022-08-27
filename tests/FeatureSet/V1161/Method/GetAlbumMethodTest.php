@@ -54,7 +54,7 @@ class GetAlbumMethodTest extends MockeryTestCase
         $albumName = 'some-album-name';
         $covertArt = 'some-cover-art';
         $songCount = 666;
-        $createDate = 12342345;
+        $createDate = 12_342_345;
         $duration = 2134;
         $artistName = 'some-artist-name';
         $artistId = 'some-artist-id';
@@ -66,7 +66,7 @@ class GetAlbumMethodTest extends MockeryTestCase
         $size = 444;
         $contentType = 'not/hing';
         $songDuration = 777;
-        $songCreateDate = 2323422;
+        $songCreateDate = 2_323_422;
         $playCount = 11111;
 
         $dataProvider->shouldReceive('getAlbum')
