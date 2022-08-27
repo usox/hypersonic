@@ -16,7 +16,7 @@ class AlbumResponderTest extends MockeryTestCase
 
     private AlbumResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new AlbumResponder(
             $this->album,

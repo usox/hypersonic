@@ -17,7 +17,7 @@ class GetCoverArtMethodTest extends MockeryTestCase
 
     private GetCoverArtMethod $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->responderFactory = Mockery::mock(ResponderFactoryInterface::class);
 

@@ -20,7 +20,7 @@ class MusicFoldersResponderTest extends MockeryTestCase
 
     private MusicFoldersResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->musicFolders = new ArrayIterator([[
             'name' => $this->name,
@@ -40,7 +40,7 @@ class MusicFoldersResponderTest extends MockeryTestCase
             ->with(
                 'musicFolders',
                 [],
-                Mockery::on(function (callable $loop) use ($XMLArray): bool {
+                Mockery::on(static function (callable $loop) use ($XMLArray): bool {
                     $loop($XMLArray);
                     return true;
                 })

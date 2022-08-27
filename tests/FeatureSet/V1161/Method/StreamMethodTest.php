@@ -19,7 +19,7 @@ class StreamMethodTest extends MockeryTestCase
 
     private StreamMethod $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->responderFactory = Mockery::mock(ResponderFactoryInterface::class);
 

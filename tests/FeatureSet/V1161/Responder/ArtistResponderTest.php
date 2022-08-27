@@ -16,7 +16,7 @@ class ArtistResponderTest extends MockeryTestCase
 
     private ArtistResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new ArtistResponder(
             $this->artist,

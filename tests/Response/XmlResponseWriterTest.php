@@ -21,7 +21,7 @@ class XmlResponseWriterTest extends MockeryTestCase
 
     private XmlResponseWriter $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->xmlBuilder = Mockery::mock(XMLBuilder::class);
 

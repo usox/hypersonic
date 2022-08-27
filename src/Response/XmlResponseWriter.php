@@ -88,6 +88,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
                     ]
                 );
         }
+
         return $this->rootNode;
     }
 }

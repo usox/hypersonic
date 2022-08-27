@@ -21,6 +21,10 @@ use Usox\HyperSonic\Response\ResponseWriterInterface;
 
 class HyperSonicTest extends MockeryTestCase
 {
+    /**
+     * @var mixed[]
+     */
+    public array $dataProvider = [];
     private MockInterface $featureSetFactory;
 
     private MockInterface $responseWriterFactory;
@@ -29,7 +33,7 @@ class HyperSonicTest extends MockeryTestCase
 
     private HyperSonic $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->featureSetFactory = Mockery::mock(FeatureSetFactoryInterface::class);
         $this->dataProvider = [];
@@ -154,13 +158,13 @@ class HyperSonicTest extends MockeryTestCase
         $hypersonic = new HyperSonic(
             $this->featureSetFactory,
             [
-                $methodName => fn () => $dataProvider,
+                $methodName => static fn () => $dataProvider,
             ],
             $this->responseWriterFactory,
             $this->authenticationManager,
         );
 
-        $method = fn () => $responder;
+        $method = static fn () => $responder;
 
         $responder->shouldReceive('isBinaryResponder')
             ->withNoArgs()
@@ -179,7 +183,7 @@ class HyperSonicTest extends MockeryTestCase
             ->withNoArgs()
             ->once()
             ->andReturn([
-                $methodName => fn () => $method,
+                $methodName => static fn () => $method,
             ]);
 
         $request->shouldReceive('getQueryParams')

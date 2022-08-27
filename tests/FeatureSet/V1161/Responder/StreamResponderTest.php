@@ -20,7 +20,7 @@ class StreamResponderTest extends MockeryTestCase
 
     private StreamResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->stream = Mockery::mock(StreamInterface::class);
 

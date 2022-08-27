@@ -65,7 +65,7 @@ final class StreamMethod implements V1161MethodInterface
 
         $estimateContentLength = (bool) ($queryParams['estimateContentLength'] ?? false);
 
-        if ($estimateContentLength === true && $bitrate > 0) {
+        if ($estimateContentLength && $bitrate > 0) {
             $streamData['estimatedContentLength'] = $streamData['length'] * $bitrate * 1000 / 8;
         }
 

@@ -18,7 +18,7 @@ class GetMusicFoldersMethodTest extends MockeryTestCase
 
     private GetMusicFoldersMethod $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->responder_factory = Mockery::mock(ResponderFactoryInterface::class);
 

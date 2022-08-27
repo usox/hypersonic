@@ -16,7 +16,7 @@ class JsonResponseWriterTest extends MockeryTestCase
 
     private JsonResponseWriter $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new JsonResponseWriter(
             $this->apiVersion,

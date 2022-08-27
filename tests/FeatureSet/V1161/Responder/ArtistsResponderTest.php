@@ -20,7 +20,7 @@ class ArtistsResponderTest extends MockeryTestCase
 
     private ArtistsResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->artistList['ignoredArticles'] = $this->ignoredArticles;
         $this->artistList['index'] = [[
@@ -45,9 +45,8 @@ class ArtistsResponderTest extends MockeryTestCase
             ->with(
                 'index',
                 ['name' => $this->indexName],
-                Mockery::on(function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray) {
                     $cb($xmlArray);
-
                     return true;
                 })
             )
@@ -57,9 +56,8 @@ class ArtistsResponderTest extends MockeryTestCase
             ->with(
                 'artists',
                 ['ignoredArticles' => $this->ignoredArticles],
-                Mockery::on(function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray) {
                     $cb($xmlArray);
-
                     return true;
                 })
             )

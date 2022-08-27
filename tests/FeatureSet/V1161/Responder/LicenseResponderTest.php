@@ -14,7 +14,7 @@ class LicenseResponderTest extends MockeryTestCase
 
     private array $licenseData = ['some-data'];
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new LicenseResponder(
             $this->licenseData

@@ -21,7 +21,7 @@ class GetAlbumMethodTest extends MockeryTestCase
 
     private GetAlbumMethod $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->responderFactory = Mockery::mock(ResponderFactoryInterface::class);
 

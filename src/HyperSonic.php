@@ -67,11 +67,11 @@ final class HyperSonic implements HyperSonicInterface
 
         try {
             $this->authenticationManager->auth($request);
-        } catch (AbstractAuthenticationException $e) {
+        } catch (AbstractAuthenticationException $authenticationException) {
             return $responseWriter->writeError(
                 $response,
                 ErrorCodeEnum::WRONG_USERNAME_OR_PASSWORD,
-                $e->getMessage()
+                $authenticationException->getMessage()
             );
         }
 

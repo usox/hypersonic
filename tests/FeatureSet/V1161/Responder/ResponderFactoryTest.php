@@ -11,7 +11,7 @@ class ResponderFactoryTest extends MockeryTestCase
 {
     private ResponderFactory $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new ResponderFactory();
     }

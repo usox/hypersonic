@@ -18,7 +18,7 @@ class GetGenresMethodTest extends MockeryTestCase
 
     private GetGenresMethod $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->responder_factory = Mockery::mock(ResponderFactoryInterface::class);
 

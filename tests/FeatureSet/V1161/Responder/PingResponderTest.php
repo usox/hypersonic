@@ -10,7 +10,7 @@ class PingResponderTest extends MockeryTestCase
 {
     private PingResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new PingResponder();
     }

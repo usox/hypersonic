@@ -17,7 +17,7 @@ class AuthenticationManagerTest extends MockeryTestCase
 
     private AuthenticationManager $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->authenticationProvider = Mockery::mock(AuthenticationProviderInterface::class);
 

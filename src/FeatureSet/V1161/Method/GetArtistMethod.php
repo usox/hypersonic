@@ -52,7 +52,7 @@ final class GetArtistMethod implements V1161MethodInterface
                 'albumCount' => $artist['albumCount'],
             ],
             array_map(
-                fn (array $album): array => [
+                static fn (array $album): array => [
                     'id' => (string) $album['id'],
                     'name' => $album['name'],
                     'artist' => $album['artistName'],

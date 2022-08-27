@@ -20,7 +20,7 @@ class GenresResponderTest extends MockeryTestCase
 
     private GenresResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->genres = [[
             'value' => $this->title,
@@ -41,7 +41,7 @@ class GenresResponderTest extends MockeryTestCase
             ->with(
                 'genres',
                 [],
-                Mockery::on(function (callable $loop) use ($XMLArray): bool {
+                Mockery::on(static function (callable $loop) use ($XMLArray): bool {
                     $loop($XMLArray);
                     return true;
                 })

@@ -15,7 +15,7 @@ class AlbumList2ResponderTest extends MockeryTestCase
 
     private AlbumList2Responder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new AlbumList2Responder(
             new ArrayIterator([$this->album])
@@ -34,9 +34,8 @@ class AlbumList2ResponderTest extends MockeryTestCase
             ->with(
                 'albumList2',
                 [],
-                Mockery::on(function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray) {
                     $cb($xmlArray);
-
                     return true;
                 })
             )

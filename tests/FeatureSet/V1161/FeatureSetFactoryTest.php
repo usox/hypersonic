@@ -10,7 +10,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
 {
     private FeatureSetFactory $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new FeatureSetFactory();
     }

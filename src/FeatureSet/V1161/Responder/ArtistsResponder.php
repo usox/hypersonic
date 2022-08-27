@@ -40,7 +40,7 @@ final class ArtistsResponder implements FormattedResponderInterface
                     $XMLArray->startLoop(
                         'index',
                         ['name' => $indexItem['name']],
-                        function (XMLArray $XMLArray) use ($indexItem): void {
+                        static function (XMLArray $XMLArray) use ($indexItem): void {
                             foreach ($indexItem['artist'] as $artist) {
                                 $XMLArray->add(
                                     'artist',

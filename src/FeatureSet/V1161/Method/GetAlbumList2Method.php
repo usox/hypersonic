@@ -23,6 +23,9 @@ use Usox\HyperSonic\Response\ResponderInterface;
 final class GetAlbumList2Method implements V1161MethodInterface
 {
     // list of allowed types for ordering
+    /**
+     * @var string[]
+     */
     private const ORDER_TYPES = [
         'random',
         'newest',
@@ -35,7 +38,14 @@ final class GetAlbumList2Method implements V1161MethodInterface
         'byGenre',
     ];
 
+    /**
+     * @var int
+     */
     private const DEFAULT_LIMIT = 10;
+
+    /**
+     * @var int
+     */
     private const MAX_LIMIT = 500;
 
     public function __construct(
@@ -80,8 +90,10 @@ final class GetAlbumList2Method implements V1161MethodInterface
                     ErrorCodeEnum::MISSING_PARAMETER
                 );
             }
+
             $orderParameter = ['year' => ['from' => (int) $fromYear, 'to' => (int) $toYear]];
         }
+
         if ($type === 'byGenre') {
             $genre = $queryParams['genre'] ?? null;
             if ($genre === null) {

@@ -17,7 +17,7 @@ class CoverArtResponderTest extends MockeryTestCase
 
     private CoverArtResponder $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new CoverArtResponder(
             $this->covertArt,

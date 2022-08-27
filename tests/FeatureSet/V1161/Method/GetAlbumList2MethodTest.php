@@ -22,7 +22,7 @@ class GetAlbumList2MethodTest extends TestCase
 
     private GetAlbumList2Method $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->responderFactory = Mockery::mock(ResponderFactoryInterface::class);
 
@@ -195,7 +195,7 @@ class GetAlbumList2MethodTest extends TestCase
 
         $this->responderFactory->shouldReceive('createAlbumList2Responder')
             ->with(Mockery::on(
-                fn (Traversable $albums): bool => iterator_to_array($albums) === [[
+                static fn (Traversable $albums): bool => iterator_to_array($albums) === [[
                     'id' => $albumId,
                     'name' => $name,
                     'coverArt' => $coverArtId,
