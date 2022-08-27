@@ -174,4 +174,22 @@ final class ResponderFactory implements ResponderFactoryInterface
             $streamData,
         );
     }
+
+    /**
+     * @param Traversable<array{
+     *  id: string,
+     *  name: string,
+     *  coverArt: string,
+     *  songCount: int,
+     *  created: string,
+     *  duration: int,
+     *  artist: string,
+     *  artistId: string,
+     * }> $albumList
+     */
+    public function createAlbumList2Responder(
+        Traversable $albumList
+    ): ResponderInterface {
+        return new AlbumList2Responder($albumList);
+    }
 }

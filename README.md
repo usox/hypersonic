@@ -87,6 +87,7 @@ Please see the official [subsonic api documentation](http://www.subsonic.org/pag
 #### 1.16.1 - Currently supported methods
 
 - getAlbum.view
+- getAlbumList2.view
 - getArtists.view
 - getArtist.view
 - getCoverArt.view

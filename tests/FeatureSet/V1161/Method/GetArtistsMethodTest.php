@@ -105,7 +105,7 @@ class GetArtistsMethodTest extends MockeryTestCase
 
         $this->assertSame(
             $responder,
-            call_user_func($this->subject, $dataProvider, [], ['musicFolderId' => $musicFolderId])
+            call_user_func($this->subject, $dataProvider, ['musicFolderId' => $musicFolderId], [])
         );
     }
 }

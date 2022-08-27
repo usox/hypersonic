@@ -12,6 +12,8 @@ use Usox\HyperSonic\Response\ResponderInterface;
  * Retrieves and transforms data for the list of artists
  *
  * This class covers the `getArtists.view` method
+ *
+ * @see http://www.subsonic.org/pages/api.jsp#getArtists
  */
 final class GetArtistsMethod implements V1161MethodInterface
 {
@@ -33,7 +35,7 @@ final class GetArtistsMethod implements V1161MethodInterface
         $currentIndex = null;
         $indexItem = [];
 
-        $musicFolderId = $args['musicFolderId'] ?? null;
+        $musicFolderId = $queryParams['musicFolderId'] ?? null;
         if ($musicFolderId !== null) {
             $musicFolderId = (string) $musicFolderId;
         }

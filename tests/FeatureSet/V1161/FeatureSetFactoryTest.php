@@ -28,6 +28,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
         return [
             ['ping.view', Method\PingMethod::class],
             ['getAlbum.view', Method\GetAlbumMethod::class],
+            ['getAlbumList2.view', Method\GetAlbumList2Method::class],
             ['getLicense.view', Method\GetLicenseMethod::class],
             ['getArtists.view', Method\GetArtistsMethod::class],
             ['getCoverArt.view', Method\GetCoverArtMethod::class],

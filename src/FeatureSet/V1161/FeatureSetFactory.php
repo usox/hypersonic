@@ -25,6 +25,7 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
             'ping.view' => fn (): Method\V1161MethodInterface => $this->createPingMethod(),
             'getLicense.view' => fn (): Method\V1161MethodInterface => $this->createGetLicenseMethod(),
             'getAlbum.view' => fn (): Method\V1161MethodInterface => $this->createGetAlbumMethod(),
+            'getAlbumList2.view' => fn (): Method\V1161MethodInterface => $this->createAlbumList2Method(),
             'getArtists.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistsMethod(),
             'getCoverArt.view' => fn (): Method\V1161MethodInterface => $this->createGetCoverArtMethod(),
             'getArtist.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistMethod(),
@@ -93,6 +94,13 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
     public function createStreamMethod(): Method\V1161MethodInterface
     {
         return new Method\StreamMethod(
+            new ResponderFactory()
+        );
+    }
+
+    public function createAlbumList2Method(): Method\V1161MethodInterface
+    {
+        return new Method\GetAlbumList2Method(
             new ResponderFactory()
         );
     }

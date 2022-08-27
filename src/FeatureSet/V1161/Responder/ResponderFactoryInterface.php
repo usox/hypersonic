@@ -137,4 +137,20 @@ interface ResponderFactoryInterface
     public function createStreamResponder(
         array $streamData,
     ): ResponderInterface;
+
+    /**
+     * @param Traversable<array{
+     *  id: string,
+     *  name: string,
+     *  coverArt: string,
+     *  songCount: int,
+     *  created: string,
+     *  duration: int,
+     *  artist: string,
+     *  artistId: string,
+     * }> $albumList
+     */
+    public function createAlbumList2Responder(
+        Traversable $albumList
+    ): ResponderInterface;
 }
