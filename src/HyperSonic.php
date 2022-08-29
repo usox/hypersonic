@@ -75,7 +75,7 @@ final class HyperSonic implements HyperSonicInterface
             );
         }
 
-        // ensure we filter all existing methods by the really implemented ones
+        // ensure we filter all possible methods by the really implemented ones
         $methods = array_intersect_key(
             $this->featureSetFactory->getMethods(),
             $this->dataProvider

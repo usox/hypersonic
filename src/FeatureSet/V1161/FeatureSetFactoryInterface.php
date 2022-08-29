@@ -12,24 +12,4 @@ interface FeatureSetFactoryInterface extends FeatureSetInterface
      * @return array<string, callable(): Method\V1161MethodInterface>
      */
     public function getMethods(): array;
-
-    public function createPingMethod(): Method\V1161MethodInterface;
-
-    public function createGetArtistsMethod(): Method\V1161MethodInterface;
-
-    public function createGetLicenseMethod(): Method\V1161MethodInterface;
-
-    public function createGetCoverArtMethod(): Method\V1161MethodInterface;
-
-    public function createGetArtistMethod(): Method\V1161MethodInterface;
-
-    public function createGetGenresMethod(): Method\V1161MethodInterface;
-
-    public function createGetMusicFoldersMethod(): Method\V1161MethodInterface;
-
-    public function createGetAlbumMethod(): Method\V1161MethodInterface;
-
-    public function createStreamMethod(): Method\V1161MethodInterface;
-
-    public function createAlbumList2Method(): Method\V1161MethodInterface;
 }

@@ -22,86 +22,36 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
     public function getMethods(): array
     {
         return [
-            'ping.view' => fn (): Method\V1161MethodInterface => $this->createPingMethod(),
-            'getLicense.view' => fn (): Method\V1161MethodInterface => $this->createGetLicenseMethod(),
-            'getAlbum.view' => fn (): Method\V1161MethodInterface => $this->createGetAlbumMethod(),
-            'getAlbumList2.view' => fn (): Method\V1161MethodInterface => $this->createAlbumList2Method(),
-            'getArtists.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistsMethod(),
-            'getCoverArt.view' => fn (): Method\V1161MethodInterface => $this->createGetCoverArtMethod(),
-            'getArtist.view' => fn (): Method\V1161MethodInterface => $this->createGetArtistMethod(),
-            'getGenres.view' => fn (): Method\V1161MethodInterface => $this->createGetGenresMethod(),
-            'getMusicFolders.view' => fn (): Method\V1161MethodInterface => $this->createGetMusicFoldersMethod(),
-            'stream.view' => fn (): Method\V1161MethodInterface => $this->createStreamMethod(),
+            'ping.view' => fn (): Method\V1161MethodInterface => new Method\PingMethod(
+                new ResponderFactory()
+            ),
+            'getLicense.view' => fn (): Method\V1161MethodInterface => new Method\GetLicenseMethod(
+                new ResponderFactory()
+            ),
+            'getAlbum.view' => fn (): Method\V1161MethodInterface => new Method\GetAlbumMethod(
+                new ResponderFactory()
+            ),
+            'getAlbumList2.view' => fn (): Method\V1161MethodInterface => new Method\GetAlbumList2Method(
+                new ResponderFactory()
+            ),
+            'getArtists.view' => fn (): Method\V1161MethodInterface => new Method\GetArtistsMethod(
+                new ResponderFactory()
+            ),
+            'getCoverArt.view' => fn (): Method\V1161MethodInterface => new Method\GetCoverArtMethod(
+                new ResponderFactory()
+            ),
+            'getArtist.view' => fn (): Method\V1161MethodInterface => new Method\GetArtistMethod(
+                new ResponderFactory()
+            ),
+            'getGenres.view' => fn (): Method\V1161MethodInterface => new Method\GetGenresMethod(
+                new ResponderFactory()
+            ),
+            'getMusicFolders.view' => fn (): Method\V1161MethodInterface => new Method\GetMusicFoldersMethod(
+                new ResponderFactory()
+            ),
+            'stream.view' => fn (): Method\V1161MethodInterface => new Method\StreamMethod(
+                new ResponderFactory()
+            ),
         ];
-    }
-
-    public function createPingMethod(): Method\V1161MethodInterface
-    {
-        return new Method\PingMethod(
-            new ResponderFactory(),
-        );
-    }
-
-    public function createGetArtistsMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetArtistsMethod(
-            new ResponderFactory(),
-        );
-    }
-
-    public function createGetLicenseMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetLicenseMethod(
-            new ResponderFactory(),
-        );
-    }
-
-    public function createGetCoverArtMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetCoverArtMethod(
-            new ResponderFactory()
-        );
-    }
-
-    public function createGetArtistMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetArtistMethod(
-            new ResponderFactory()
-        );
-    }
-
-    public function createGetGenresMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetGenresMethod(
-            new ResponderFactory()
-        );
-    }
-
-    public function createGetMusicFoldersMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetMusicFoldersMethod(
-            new ResponderFactory()
-        );
-    }
-
-    public function createGetAlbumMethod(): Method\V1161MethodInterface
-    {
-        return new Method\GetAlbumMethod(
-            new ResponderFactory()
-        );
-    }
-
-    public function createStreamMethod(): Method\V1161MethodInterface
-    {
-        return new Method\StreamMethod(
-            new ResponderFactory()
-        );
-    }
-
-    public function createAlbumList2Method(): Method\V1161MethodInterface
-    {
-        return new Method\GetAlbumList2Method(
-            new ResponderFactory()
-        );
     }
 }
