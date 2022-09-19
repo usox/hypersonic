@@ -10,6 +10,7 @@ use Generator;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\MockInterface;
+use Traversable;
 use Usox\HyperSonic\FeatureSet\V1161\Contract\GetStarred2DataProviderInterface;
 use Usox\HyperSonic\FeatureSet\V1161\Responder\ResponderFactoryInterface;
 use Usox\HyperSonic\Response\ResponderInterface;
@@ -85,41 +86,55 @@ class GetStarred2MethodTest extends MockeryTestCase
             ->andReturn(
                 [
                     'songs' => new ArrayIterator(
-                        [
+                        [[
                             'id' => $songId,
                             'name' => $songName,
-                            'album' => $albumName,
-                            'artist' => $artistName,
-                            'coverArt' => $coverArtId,
+                            'albumName' => $albumName,
+                            'artistName' => $artistName,
+                            'coverArtId' => $coverArtId,
                             'albumId' => $albumId,
                             'artistId' => $artistId,
                             'length' => $length,
                             'createDate' => $createDate,
                             'starredDate' => $starredDate,
                             'filesize' => $size,
-                        ]
+                        ]]
                     ),
                     'albums' => new ArrayIterator(
-                        [
+                        [[
                             'id' => $albumId,
                             'name' => $albumName,
-                            'artist' => $artistName,
+                            'artistName' => $artistName,
                             'artistId' => $artistId,
                             'songCount' => $songCount,
-                            'coverArt' => $coverArtId,
+                            'coverArtId' => $coverArtId,
                             'length' => $length,
                             'createDate' => $createDate,
                             'starredDate' => $starredDate,
                             'year' => $albumYear,
-                        ]
+                        ]]
                     ),
                 ]
             );
 
         $this->responderFactory->shouldReceive('createStarred2Responder')
             ->with(
-                Mockery::type(Generator::class),
-                Mockery::type(Generator::class)
+                Mockery::on(
+                    function (Traversable $data): bool {
+                        $this->assertNotEmpty(
+                            iterator_to_array($data)
+                        );
+                        return true;
+                    },
+                ),
+                Mockery::on(
+                    function (Traversable $data): bool {
+                        $this->assertNotEmpty(
+                            iterator_to_array($data)
+                        );
+                        return true;
+                    },
+                ),
             )
             ->once()
             ->andReturn($responder);
