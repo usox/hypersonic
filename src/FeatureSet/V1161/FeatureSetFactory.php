@@ -22,34 +22,37 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
     public function getMethods(): array
     {
         return [
-            'ping.view' => fn (): Method\V1161MethodInterface => new Method\PingMethod(
+            'ping.view' => static fn (): Method\V1161MethodInterface => new Method\PingMethod(
                 new ResponderFactory()
             ),
-            'getLicense.view' => fn (): Method\V1161MethodInterface => new Method\GetLicenseMethod(
+            'getLicense.view' => static fn (): Method\V1161MethodInterface => new Method\GetLicenseMethod(
                 new ResponderFactory()
             ),
-            'getAlbum.view' => fn (): Method\V1161MethodInterface => new Method\GetAlbumMethod(
+            'getAlbum.view' => static fn (): Method\V1161MethodInterface => new Method\GetAlbumMethod(
                 new ResponderFactory()
             ),
-            'getAlbumList2.view' => fn (): Method\V1161MethodInterface => new Method\GetAlbumList2Method(
+            'getAlbumList2.view' => static fn (): Method\V1161MethodInterface => new Method\GetAlbumList2Method(
                 new ResponderFactory()
             ),
-            'getArtists.view' => fn (): Method\V1161MethodInterface => new Method\GetArtistsMethod(
+            'getArtists.view' => static fn (): Method\V1161MethodInterface => new Method\GetArtistsMethod(
                 new ResponderFactory()
             ),
-            'getCoverArt.view' => fn (): Method\V1161MethodInterface => new Method\GetCoverArtMethod(
+            'getCoverArt.view' => static fn (): Method\V1161MethodInterface => new Method\GetCoverArtMethod(
                 new ResponderFactory()
             ),
-            'getArtist.view' => fn (): Method\V1161MethodInterface => new Method\GetArtistMethod(
+            'getArtist.view' => static fn (): Method\V1161MethodInterface => new Method\GetArtistMethod(
                 new ResponderFactory()
             ),
-            'getGenres.view' => fn (): Method\V1161MethodInterface => new Method\GetGenresMethod(
+            'getGenres.view' => static fn (): Method\V1161MethodInterface => new Method\GetGenresMethod(
                 new ResponderFactory()
             ),
-            'getMusicFolders.view' => fn (): Method\V1161MethodInterface => new Method\GetMusicFoldersMethod(
+            'getMusicFolders.view' => static fn (): Method\V1161MethodInterface => new Method\GetMusicFoldersMethod(
                 new ResponderFactory()
             ),
-            'stream.view' => fn (): Method\V1161MethodInterface => new Method\StreamMethod(
+            'stream.view' => static fn (): Method\V1161MethodInterface => new Method\StreamMethod(
+                new ResponderFactory()
+            ),
+            'getStarred2.view' => static fn (): Method\V1161MethodInterface => new Method\GetStarred2Method(
                 new ResponderFactory()
             ),
         ];

@@ -153,4 +153,36 @@ interface ResponderFactoryInterface
     public function createAlbumList2Responder(
         Traversable $albumList
     ): ResponderInterface;
+
+    /**
+     * @param Traversable<array{
+     *  id: string,
+     *  name: string,
+     *  album: string,
+     *  artist: string,
+     *  coverArt: string,
+     *  albumId: string,
+     *  artistId: string,
+     *  duration: int,
+     *  created: string,
+     *  starred: string,
+     *  size: int
+     * }> $songs
+     * @param Traversable<array{
+     *  id: string,
+     *  name: string,
+     *  artist: string,
+     *  artistId: string,
+     *  songCount: int,
+     *  coverArt: string,
+     *  duration: int,
+     *  created: string,
+     *  starred: string,
+     *  year: int
+     * }> $albums
+     */
+    public function createStarred2Responder(
+        Traversable $songs,
+        Traversable $albums,
+    ): ResponderInterface;
 }

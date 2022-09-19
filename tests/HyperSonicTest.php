@@ -25,6 +25,7 @@ class HyperSonicTest extends MockeryTestCase
      * @var mixed[]
      */
     public array $dataProvider = [];
+
     private MockInterface $featureSetFactory;
 
     private MockInterface $responseWriterFactory;

@@ -29,6 +29,7 @@ class ResponderFactoryTest extends MockeryTestCase
             ['createMusicFoldersResponder', MusicFoldersResponder::class, [new ArrayIterator(['folders'])]],
             ['createStreamResponder', StreamResponder::class, [['data']]],
             ['createAlbumList2Responder', AlbumList2Responder::class, [new ArrayIterator()]],
+            ['createStarred2Responder', GetStarred2Responder::class, [new ArrayIterator(), new ArrayIterator(),]],
         ];
     }
 

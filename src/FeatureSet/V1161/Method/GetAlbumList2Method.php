@@ -22,8 +22,9 @@ use Usox\HyperSonic\Response\ResponderInterface;
  */
 final class GetAlbumList2Method implements V1161MethodInterface
 {
-    // list of allowed types for ordering
     /**
+     * List of allowed types for ordering
+     *
      * @var string[]
      */
     private const ORDER_TYPES = [
