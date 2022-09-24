@@ -41,13 +41,16 @@
         "qa": [
             "@composer check-cs",
             "@composer stan",
+            "@composer rector:dry",
             "@composer test"
         ],
         "check-cs": "php-cs-fixer fix --dry-run --diff",
         "fix-cs": "php-cs-fixer fix",
         "test": "phpunit tests",
         "stan": "phpstan analyse",
-        "coverage": "phpunit --warm-coverage-cache tests && XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html build/coverage tests"
+        "coverage": "phpunit --warm-coverage-cache tests && XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html build/coverage tests",
+        "rector:dry": "rector --clear-cache process -n",
+        "rector:fix": "rector --clear-cache process"
     },
     "scripts-descriptions": {
         "qa": "Runs all QA related scripts",
@@ -55,6 +58,8 @@
         "fix-cs": "Apply the code style rules onto the codebase",
         "test": "Runs the unittests",
         "stan": "Runs phpstan code analysis",
-        "coverage": "Runs the code coverage generation"
+        "coverage": "Runs the code coverage generation",
+        "rector:dry": "Performs a rector dry run",
+        "rector:fix": "Applies pending rector code migrations"
     }
 }
