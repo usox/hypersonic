@@ -53,7 +53,6 @@ final class GetStarred2Method implements V1161MethodInterface
      *   name: string,
      *   artistName: string,
      *   coverArtId: string,
-     *   albumId: int|string,
      *   artistId: int|string,
      *   length: int,
      *   createDate: DateTimeInterface,
