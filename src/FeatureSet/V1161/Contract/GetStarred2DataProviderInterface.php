@@ -28,7 +28,6 @@ interface GetStarred2DataProviderInterface extends V1161DataProviderInterface
      *  albums: Traversable<array{
      *    id: int|string,
      *    name: string,
-     *    albumName: string,
      *    artistName: string,
      *    coverArtId: string,
      *    albumId: int|string,

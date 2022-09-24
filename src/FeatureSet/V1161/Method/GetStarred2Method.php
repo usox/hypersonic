@@ -51,7 +51,6 @@ final class GetStarred2Method implements V1161MethodInterface
      * @param Traversable<array{
      *   id: int|string,
      *   name: string,
-     *   albumName: string,
      *   artistName: string,
      *   coverArtId: string,
      *   albumId: int|string,
