@@ -45,7 +45,7 @@ class ArtistsResponderTest extends MockeryTestCase
             ->with(
                 'index',
                 ['name' => $this->indexName],
-                Mockery::on(static function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
                 })
@@ -56,7 +56,7 @@ class ArtistsResponderTest extends MockeryTestCase
             ->with(
                 'artists',
                 ['ignoredArticles' => $this->ignoredArticles],
-                Mockery::on(static function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
                 })

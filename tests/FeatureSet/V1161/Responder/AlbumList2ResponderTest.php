@@ -34,7 +34,7 @@ class AlbumList2ResponderTest extends MockeryTestCase
             ->with(
                 'albumList2',
                 [],
-                Mockery::on(static function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
                 })

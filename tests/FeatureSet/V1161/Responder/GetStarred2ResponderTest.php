@@ -39,7 +39,7 @@ class GetStarred2ResponderTest extends Mockery\Adapter\Phpunit\MockeryTestCase
             ->with(
                 'starred2',
                 [],
-                Mockery::on(static function ($cb) use ($xmlArray) {
+                Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
                 })
