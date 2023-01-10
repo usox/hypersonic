@@ -21,7 +21,7 @@ use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 final class HyperSonic implements HyperSonicInterface
 {
     /**
-     * @param array<string, callable(): callable> $dataProvider
+     * @param array<string, callable(): object> $dataProvider
      */
     public function __construct(
         private readonly FeatureSetFactoryInterface $featureSetFactory,
@@ -119,7 +119,7 @@ final class HyperSonic implements HyperSonicInterface
      * of a key (the method name) and a callable which creates the
      * data provider. See documentation
      *
-     * @param array<string, callable(): callable> $dataProvider
+     * @param array<string, callable(): object> $dataProvider
      */
     public static function init(
         FeatureSetFactoryInterface $featureSetFactory,
