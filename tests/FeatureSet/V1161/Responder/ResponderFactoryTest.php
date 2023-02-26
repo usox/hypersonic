@@ -16,7 +16,7 @@ class ResponderFactoryTest extends MockeryTestCase
         $this->subject = new ResponderFactory();
     }
 
-    public function responderDataProvider(): array
+    public static function responderDataProvider(): array
     {
         return [
             ['createAlbumResponder', AlbumResponder::class, [['album'], ['songs']]],

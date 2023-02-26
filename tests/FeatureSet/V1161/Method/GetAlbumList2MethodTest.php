@@ -140,7 +140,7 @@ class GetAlbumList2MethodTest extends TestCase
         );
     }
 
-    public function orderTypeDataProvider(): array
+    public static function orderTypeDataProvider(): array
     {
         return [
             ['random'],

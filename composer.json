@@ -13,7 +13,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^10",
         "mockery/mockery": "^1.5",
         "phpstan/phpstan": "^1.5",
         "phpstan/phpstan-mockery": "^1",

@@ -11,6 +11,7 @@ use Usox\HyperSonic\Authentication\AuthenticationManagerInterface;
 use Usox\HyperSonic\Authentication\AuthenticationProviderInterface;
 use Usox\HyperSonic\Authentication\Exception\AbstractAuthenticationException;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
+use Usox\HyperSonic\FeatureSet\FeatureSetMethodInterface;
 use Usox\HyperSonic\FeatureSet\V1161\FeatureSetFactoryInterface;
 use Usox\HyperSonic\Response\BinaryResponderInterface;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
@@ -83,11 +84,10 @@ final class HyperSonic implements HyperSonicInterface
 
         $methodName = $args['methodName'];
 
-        /** @var callable|null $handler */
+        /** @var callable():FeatureSetMethodInterface|null $handler */
         $handler = $methods[$methodName] ?? null;
 
         if ($handler !== null) {
-            /** @var callable $handler */
             // Retrieve the data provider
             $dataProvider = call_user_func($this->dataProvider[$methodName]);
 

@@ -1,25 +1,14 @@
 <?xml version="1.0"?>
-<phpunit
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
-	backupGlobals="true"
-	backupStaticAttributes="false"
-	bootstrap="tests/bootstrap.php"
-	cacheResult="true"
-	colors="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	forceCoversAnnotation="false"
-	processIsolation="false"
-	stopOnError="false"
-	stopOnFailure="false"
-	stopOnIncomplete="false"
-	stopOnSkipped="false"
-	stopOnRisky="false">
-	<coverage cacheDirectory="build/coverageCache">
-		<include>
-			<directory suffix=".php">src</directory>
-		</include>
-	</coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         backupGlobals="true"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory="build/.phpunit.cache"
+         >
+  <coverage>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </coverage>
 </phpunit>

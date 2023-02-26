@@ -23,7 +23,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
         );
     }
 
-    public function methodDataProvider(): array
+    public static function methodDataProvider(): array
     {
         return [
             ['ping.view', Method\PingMethod::class],
