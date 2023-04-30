@@ -13,7 +13,7 @@ final class GetStarred2Responder implements FormattedResponderInterface
     /**
      * @param Traversable<array{
      *  id: string,
-     *  name: string,
+     *  title: string,
      *  album: string,
      *  artist: string,
      *  coverArt: string,

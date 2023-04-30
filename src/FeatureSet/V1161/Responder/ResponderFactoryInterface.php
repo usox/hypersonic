@@ -157,7 +157,7 @@ interface ResponderFactoryInterface
     /**
      * @param Traversable<array{
      *  id: string,
-     *  name: string,
+     *  title: string,
      *  album: string,
      *  artist: string,
      *  coverArt: string,

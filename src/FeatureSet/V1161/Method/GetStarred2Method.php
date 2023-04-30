@@ -109,7 +109,7 @@ final class GetStarred2Method implements V1161MethodInterface
      *
      * @return Generator<array{
      *  id: string,
-     *  name: string,
+     *  title: string,
      *  album: string,
      *  artist: string,
      *  coverArt: string,
@@ -126,7 +126,7 @@ final class GetStarred2Method implements V1161MethodInterface
         foreach ($songs as $song) {
             yield [
                 'id' => (string) $song['id'],
-                'name' => $song['name'],
+                'title' => $song['name'],
                 'album' => $song['albumName'],
                 'artist' => $song['artistName'],
                 'coverArt' => $song['coverArtId'],
