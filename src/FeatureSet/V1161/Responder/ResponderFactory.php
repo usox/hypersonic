@@ -229,4 +229,27 @@ final class ResponderFactory implements ResponderFactoryInterface
             $albums
         );
     }
+
+    /**
+     * @param Traversable<array{
+     *  id: string,
+     *  parent: string,
+     *  title: string,
+     *  isDir: string,
+     *  album: string,
+     *  artist: string,
+     *  track: int,
+     *  year: int,
+     *  coverArt: string,
+     *  duration: int,
+     *  size: int
+     * }> $songs
+     */
+    public function createRandomSongsResponder(
+        Traversable $songs
+    ): ResponderInterface {
+        return new GetRandomSongsResponder(
+            $songs
+        );
+    }
 }

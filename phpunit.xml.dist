@@ -5,10 +5,15 @@
          bootstrap="tests/bootstrap.php"
          colors="true"
          cacheDirectory="build/.phpunit.cache">
-  <coverage/>
-  <source>
-    <include>
-      <directory>src</directory>
-    </include>
-  </source>
+    <coverage />
+    <testsuites>
+        <testsuite name="Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
 </phpunit>

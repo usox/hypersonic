@@ -94,6 +94,7 @@ Please see the official [subsonic api documentation](http://www.subsonic.org/pag
 - getGenres.view
 - getLicense.view
 - getMusicFolders.view
+- getRandomSongs.view
 - getStarred2.view
 - ping.view
 - stream.view

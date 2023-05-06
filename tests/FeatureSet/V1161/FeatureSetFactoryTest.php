@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161;
 
-use Mockery\Adapter\Phpunit\MockeryTestCase;
+use PHPUnit\Framework\TestCase;
 
-class FeatureSetFactoryTest extends MockeryTestCase
+class FeatureSetFactoryTest extends TestCase
 {
     private FeatureSetFactory $subject;
 
@@ -17,7 +17,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
 
     public function testGetVersionReturnsValue(): void
     {
-        $this->assertSame(
+        static::assertSame(
             '1.16.1',
             $this->subject->getVersion()
         );
@@ -37,6 +37,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
             ['getMusicFolders.view', Method\GetMusicFoldersMethod::class],
             ['stream.view', Method\StreamMethod::class],
             ['getStarred2.view', Method\GetStarred2Method::class],
+            ['getRandomSongs.view', Method\GetRandomSongsMethod::class],
         ];
     }
 
@@ -47,7 +48,7 @@ class FeatureSetFactoryTest extends MockeryTestCase
         string $apiMethod,
         string $className
     ): void {
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             $className,
             $this->subject->getMethods()[$apiMethod]()
         );

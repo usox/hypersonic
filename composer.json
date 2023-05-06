@@ -18,7 +18,7 @@
         "phpstan/phpstan": "^1.5",
         "phpstan/phpstan-mockery": "^1",
         "phpstan/phpstan-strict-rules": "^1",
-        "rector/rector": "^0.15"
+        "rector/rector": "^0.16"
     },
     "license": "MIT",
     "autoload": {
@@ -48,9 +48,9 @@
         "fix-cs": "php-cs-fixer fix",
         "test": "phpunit tests",
         "stan": "phpstan analyse",
-        "coverage": "phpunit --warm-coverage-cache tests && XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html build/coverage tests",
-        "rector:dry": "rector --clear-cache process -n",
-        "rector:fix": "rector --clear-cache process"
+        "coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html build/coverage",
+        "rector:dry": "rector -n",
+        "rector:fix": "rector process"
     },
     "scripts-descriptions": {
         "qa": "Runs all QA related scripts",

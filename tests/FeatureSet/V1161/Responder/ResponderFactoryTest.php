@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
 use ArrayIterator;
-use Mockery\Adapter\Phpunit\MockeryTestCase;
+use PHPUnit\Framework\TestCase;
 
-class ResponderFactoryTest extends MockeryTestCase
+class ResponderFactoryTest extends TestCase
 {
     private ResponderFactory $subject;
 
@@ -30,6 +30,7 @@ class ResponderFactoryTest extends MockeryTestCase
             ['createStreamResponder', StreamResponder::class, [['data']]],
             ['createAlbumList2Responder', AlbumList2Responder::class, [new ArrayIterator()]],
             ['createStarred2Responder', GetStarred2Responder::class, [new ArrayIterator(), new ArrayIterator(),]],
+            ['createRandomSongsResponder', GetRandomSongsResponder::class, [new ArrayIterator()]],
         ];
     }
 

@@ -55,6 +55,9 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
             'getStarred2.view' => static fn (): Method\V1161MethodInterface => new Method\GetStarred2Method(
                 new ResponderFactory()
             ),
+            'getRandomSongs.view' => static fn (): Method\V1161MethodInterface => new Method\GetRandomSongsMethod(
+                new ResponderFactory()
+            ),
         ];
     }
 }
