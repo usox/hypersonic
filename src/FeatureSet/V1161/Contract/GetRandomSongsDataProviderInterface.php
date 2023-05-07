@@ -11,7 +11,7 @@ interface GetRandomSongsDataProviderInterface extends V1161DataProviderInterface
     /**
      * Returns a list of random songs
      *
-     * @param string|null $genre Name of the requested genre, e.g. "Symphonic Thrash Metal"
+     * @param string|null $genreName Name of the requested genre, e.g. "Symphonic Thrash Metal"
      *
      * @return Traversable<array{
      *  id: int|string,
@@ -30,7 +30,7 @@ interface GetRandomSongsDataProviderInterface extends V1161DataProviderInterface
     public function getRandomSongs(
         ?string $musicFolderId,
         ?int $limit = 10,
-        ?string $genre = null,
+        ?string $genreName = null,
         ?int $fromYear = null,
         ?int $toYear = null
     ): Traversable;
