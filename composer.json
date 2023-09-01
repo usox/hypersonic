@@ -18,7 +18,7 @@
         "phpstan/phpstan": "^1.5",
         "phpstan/phpstan-mockery": "^1",
         "phpstan/phpstan-strict-rules": "^1",
-        "rector/rector": "^0.17"
+        "rector/rector": "^0.18"
     },
     "license": "MIT",
     "autoload": {
