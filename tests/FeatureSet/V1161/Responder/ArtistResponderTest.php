@@ -50,7 +50,7 @@ class ArtistResponderTest extends MockeryTestCase
         $this->subject->writeJson($data);
 
         $this->assertSame(
-            array_merge($this->artist, ['album' => $this->albums]),
+            [...$this->artist, 'album' => $this->albums],
             $data['artist']
         );
     }
