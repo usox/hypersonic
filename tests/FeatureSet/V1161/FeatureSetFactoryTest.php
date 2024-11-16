@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class FeatureSetFactoryTest extends TestCase
@@ -41,9 +42,7 @@ class FeatureSetFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider methodDataProvider
-     */
+    #[DataProvider('methodDataProvider')]
     public function testMethodCreation(
         string $apiMethod,
         string $className

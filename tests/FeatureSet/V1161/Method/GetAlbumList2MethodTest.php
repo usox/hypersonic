@@ -8,6 +8,7 @@ use ArrayIterator;
 use DateTime;
 use Mockery;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Traversable;
 use Usox\HyperSonic\Exception\ErrorCodeEnum;
@@ -153,9 +154,7 @@ class GetAlbumList2MethodTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider orderTypeDataProvider
-     */
+    #[DataProvider('orderTypeDataProvider')]
     public function testInvokeTransformsAndReturnsData(
         string $type
     ): void {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ResponderFactoryTest extends TestCase
@@ -34,9 +35,7 @@ class ResponderFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider responderDataProvider
-     */
+    #[DataProvider('responderDataProvider')]
     public function testFactoryMethods(
         string $methodName,
         string $expectedInstance,
