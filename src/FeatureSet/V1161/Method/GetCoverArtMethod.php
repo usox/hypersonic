@@ -13,10 +13,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `getCoverArt.view` method
  */
-final class GetCoverArtMethod implements V1161MethodInterface
+final readonly class GetCoverArtMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -27,10 +27,10 @@ final class GetCoverArtMethod implements V1161MethodInterface
     public function __invoke(
         GetCoverArtDataProviderInterface $getCoverArtDataProvider,
         array $queryParams,
-        array $args
+        array $args,
     ): ResponderInterface {
         $art = $getCoverArtDataProvider->getArt(
-            (string) ($queryParams['id'] ?? '')
+            (string) ($queryParams['id'] ?? ''),
         );
 
         return $this->responderFactory->createCoverArtResponder(

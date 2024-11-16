@@ -36,7 +36,7 @@ class GetRandomSongsResponderTest extends Mockery\Adapter\Phpunit\MockeryTestCas
                 Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
-                })
+                }),
             )
             ->once();
 
@@ -53,14 +53,14 @@ class GetRandomSongsResponderTest extends Mockery\Adapter\Phpunit\MockeryTestCas
             [
                 'song' => [$this->song],
             ],
-            $data['randomSongs']
+            $data['randomSongs'],
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

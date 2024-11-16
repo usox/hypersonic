@@ -106,14 +106,14 @@ class GetArtistMethodTest extends MockeryTestCase
                     'created' => $created->format(DATE_ATOM),
                     'year' => $year,
                     'genre' => $genre,
-                ]]
+                ]],
             )
             ->once()
             ->andReturn($responder);
 
         $this->assertSame(
             $responder,
-            call_user_func($this->subject, $dataProvider, [], [])
+            call_user_func($this->subject, $dataProvider, [], []),
         );
     }
 }

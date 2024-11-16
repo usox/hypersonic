@@ -32,6 +32,6 @@ interface GetRandomSongsDataProviderInterface extends V1161DataProviderInterface
         ?int $limit = 10,
         ?string $genreName = null,
         ?int $fromYear = null,
-        ?int $toYear = null
+        ?int $toYear = null,
     ): Traversable;
 }

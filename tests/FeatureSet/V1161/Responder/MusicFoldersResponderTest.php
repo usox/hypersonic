@@ -43,7 +43,7 @@ class MusicFoldersResponderTest extends MockeryTestCase
                 Mockery::on(static function (callable $loop) use ($XMLArray): bool {
                     $loop($XMLArray);
                     return true;
-                })
+                }),
             );
         $XMLArray->shouldReceive('add')
             ->with(
@@ -52,7 +52,7 @@ class MusicFoldersResponderTest extends MockeryTestCase
                 [
                     'name' => htmlspecialchars($this->name),
                     'id' => $this->id,
-                ]
+                ],
             )
             ->once();
 
@@ -67,14 +67,14 @@ class MusicFoldersResponderTest extends MockeryTestCase
 
         $this->assertSame(
             ['musicFolders' => ['musicFolder' => iterator_to_array($this->musicFolders)]],
-            $data
+            $data,
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

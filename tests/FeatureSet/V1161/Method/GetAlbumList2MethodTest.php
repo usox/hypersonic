@@ -86,7 +86,7 @@ class GetAlbumList2MethodTest extends TestCase
                 10,
                 0,
                 ['year' => ['from' => $fromYear, 'to' => $toYear]],
-                null
+                null,
             )
             ->once()
             ->andReturn(new ArrayIterator());
@@ -102,8 +102,8 @@ class GetAlbumList2MethodTest extends TestCase
                 $this->subject,
                 $dataProvider,
                 ['type' => 'byYear', 'fromYear' => (string) $fromYear, 'toYear' => (string) $toYear],
-                []
-            )
+                [],
+            ),
         );
     }
 
@@ -120,7 +120,7 @@ class GetAlbumList2MethodTest extends TestCase
                 10,
                 0,
                 ['genre' => 'snafu'],
-                null
+                null,
             )
             ->once()
             ->andReturn(new ArrayIterator());
@@ -136,27 +136,25 @@ class GetAlbumList2MethodTest extends TestCase
                 $this->subject,
                 $dataProvider,
                 ['type' => 'byGenre', 'genre' => $genre],
-                []
-            )
+                [],
+            ),
         );
     }
 
-    public static function orderTypeDataProvider(): array
+    public static function orderTypeDataProvider(): \Iterator
     {
-        return [
-            ['random'],
-            ['newest'],
-            ['frequent'],
-            ['recent'],
-            ['starred'],
-            ['alphabeticalByName'],
-            ['alphabeticalByArtist'],
-        ];
+        yield ['random'];
+        yield ['newest'];
+        yield ['frequent'];
+        yield ['recent'];
+        yield ['starred'];
+        yield ['alphabeticalByName'];
+        yield ['alphabeticalByArtist'];
     }
 
     #[DataProvider('orderTypeDataProvider')]
     public function testInvokeTransformsAndReturnsData(
-        string $type
+        string $type,
     ): void {
         $dataProvider = Mockery::mock(AlbumList2DataProviderInterface::class);
         $responder = Mockery::mock(ResponderInterface::class);
@@ -178,7 +176,7 @@ class GetAlbumList2MethodTest extends TestCase
                 500,
                 $offset,
                 [],
-                $musicFolderId
+                $musicFolderId,
             )
             ->once()
             ->andReturn(new ArrayIterator([[
@@ -203,7 +201,7 @@ class GetAlbumList2MethodTest extends TestCase
                     'duration' => $duration,
                     'artist' => $artistName,
                     'artistId' => $artistId,
-                ]]
+                ]],
             ))
             ->once()
             ->andReturn($responder);
@@ -214,8 +212,8 @@ class GetAlbumList2MethodTest extends TestCase
                 $this->subject,
                 $dataProvider,
                 ['type' => $type, 'musicFolderId' => $musicFolderId, 'size' => 12345, 'offset' => $offset],
-                []
-            )
+                [],
+            ),
         );
     }
 }

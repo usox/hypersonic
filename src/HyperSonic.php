@@ -19,16 +19,16 @@ use Usox\HyperSonic\Response\ResponderInterface;
 use Usox\HyperSonic\Response\ResponseWriterFactory;
 use Usox\HyperSonic\Response\ResponseWriterFactoryInterface;
 
-final class HyperSonic implements HyperSonicInterface
+final readonly class HyperSonic implements HyperSonicInterface
 {
     /**
      * @param array<string, callable(): FeatureSetMethodInterface> $dataProvider
      */
     public function __construct(
-        private readonly FeatureSetFactoryInterface $featureSetFactory,
-        private readonly array $dataProvider,
-        private readonly ResponseWriterFactoryInterface $responseWriterFactory,
-        private readonly AuthenticationManagerInterface $authenticationManager,
+        private FeatureSetFactoryInterface $featureSetFactory,
+        private array $dataProvider,
+        private ResponseWriterFactoryInterface $responseWriterFactory,
+        private AuthenticationManagerInterface $authenticationManager,
     ) {
     }
 
@@ -38,7 +38,7 @@ final class HyperSonic implements HyperSonicInterface
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        array $args
+        array $args,
     ): ResponseInterface {
         return $this->run($request, $response, $args);
     }
@@ -49,7 +49,7 @@ final class HyperSonic implements HyperSonicInterface
     public function run(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        array $args
+        array $args,
     ): ResponseInterface {
         $queryParams = $request->getQueryParams();
 
@@ -58,11 +58,11 @@ final class HyperSonic implements HyperSonicInterface
 
         if ($responseFormat === 'xml') {
             $responseWriter = $this->responseWriterFactory->createXmlResponseWriter(
-                $this->featureSetFactory->getVersion()
+                $this->featureSetFactory->getVersion(),
             );
         } else {
             $responseWriter = $this->responseWriterFactory->createJsonResponseWriter(
-                $this->featureSetFactory->getVersion()
+                $this->featureSetFactory->getVersion(),
             );
         }
 
@@ -72,14 +72,14 @@ final class HyperSonic implements HyperSonicInterface
             return $responseWriter->writeError(
                 $response,
                 ErrorCodeEnum::WRONG_USERNAME_OR_PASSWORD,
-                $authenticationException->getMessage()
+                $authenticationException->getMessage(),
             );
         }
 
         // ensure we filter all possible methods by the really implemented ones
         $methods = array_intersect_key(
             $this->featureSetFactory->getMethods(),
-            $this->dataProvider
+            $this->dataProvider,
         );
 
         $methodName = $args['methodName'];

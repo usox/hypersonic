@@ -38,7 +38,7 @@ class StreamResponderTest extends MockeryTestCase
         $response->shouldReceive('withHeader')
             ->with(
                 'Content-Length',
-                (string) $this->estimatedContentLength
+                (string) $this->estimatedContentLength,
             )
             ->once()
             ->andReturnSelf();
@@ -61,7 +61,7 @@ class StreamResponderTest extends MockeryTestCase
 
         $this->assertSame(
             $response,
-            $this->subject->writeResponse($response)
+            $this->subject->writeResponse($response),
         );
     }
 }

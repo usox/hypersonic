@@ -52,13 +52,13 @@ class JsonResponseWriterTest extends MockeryTestCase
                         'status' => 'ok',
                         'version' => $this->apiVersion,
                     ],
-                ], JSON_PRETTY_PRINT)
+                ], JSON_PRETTY_PRINT),
             )
             ->once();
 
         $this->assertSame(
             $response,
-            $this->subject->write($response, $responder)
+            $this->subject->write($response, $responder),
         );
     }
 
@@ -90,13 +90,13 @@ class JsonResponseWriterTest extends MockeryTestCase
                             'message' => $message,
                         ],
                     ],
-                ], JSON_PRETTY_PRINT)
+                ], JSON_PRETTY_PRINT),
             )
             ->once();
 
         $this->assertSame(
             $response,
-            $this->subject->writeError($response, $errorCode, $message)
+            $this->subject->writeError($response, $errorCode, $message),
         );
     }
 }

@@ -15,10 +15,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `stream.view` method
  */
-final class StreamMethod implements V1161MethodInterface
+final readonly class StreamMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -39,7 +39,7 @@ final class StreamMethod implements V1161MethodInterface
     public function __invoke(
         StreamDataProviderInterface $streamDataProvider,
         array $queryParams,
-        array $args
+        array $args,
     ): ResponderInterface {
         $bitrate = (int) ($queryParams['maxBitRate'] ?? 0);
         if ($bitrate === 0) {
@@ -54,12 +54,12 @@ final class StreamMethod implements V1161MethodInterface
         $streamData = $streamDataProvider->stream(
             (string) ($queryParams['id'] ?? ''),
             $format,
-            $bitrate
+            $bitrate,
         );
 
         if ($streamData === null) {
             throw new MethodCallFailedException(
-                ErrorCodeEnum::NOT_FOUND
+                ErrorCodeEnum::NOT_FOUND,
             );
         }
 

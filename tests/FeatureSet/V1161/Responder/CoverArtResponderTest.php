@@ -28,7 +28,7 @@ class CoverArtResponderTest extends MockeryTestCase
     public function testIsBinaryResponderReturnsTrue(): void
     {
         $this->assertTrue(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 
@@ -52,7 +52,7 @@ class CoverArtResponderTest extends MockeryTestCase
 
         $this->assertSame(
             $response,
-            $this->subject->writeResponse($response)
+            $this->subject->writeResponse($response),
         );
     }
 }

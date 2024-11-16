@@ -75,8 +75,8 @@ class StreamMethodTest extends MockeryTestCase
                     'maxBitRate' => (string) $bitrate,
                     'estimateContentLength' => 'true',
                 ],
-                []
-            )
+                [],
+            ),
         );
     }
 }

@@ -18,10 +18,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * @see http://www.subsonic.org/pages/api.jsp#getStarred2
  */
-final class GetStarred2Method implements V1161MethodInterface
+final readonly class GetStarred2Method implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 

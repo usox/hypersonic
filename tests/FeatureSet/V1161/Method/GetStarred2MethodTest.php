@@ -43,7 +43,7 @@ class GetStarred2MethodTest extends MockeryTestCase
         $this->responderFactory->shouldReceive('createStarred2Responder')
             ->with(
                 Mockery::type(Generator::class),
-                Mockery::type(Generator::class)
+                Mockery::type(Generator::class),
             )
             ->once()
             ->andReturn($responder);
@@ -54,8 +54,8 @@ class GetStarred2MethodTest extends MockeryTestCase
                 $this->subject,
                 $dataProvider,
                 [],
-                []
-            )
+                [],
+            ),
         );
     }
 
@@ -98,7 +98,7 @@ class GetStarred2MethodTest extends MockeryTestCase
                             'createDate' => $createDate,
                             'starredDate' => $starredDate,
                             'filesize' => $size,
-                        ]]
+                        ]],
                     ),
                     'albums' => new ArrayIterator(
                         [[
@@ -112,9 +112,9 @@ class GetStarred2MethodTest extends MockeryTestCase
                             'createDate' => $createDate,
                             'starredDate' => $starredDate,
                             'year' => $albumYear,
-                        ]]
+                        ]],
                     ),
-                ]
+                ],
             );
 
         $this->responderFactory->shouldReceive('createStarred2Responder')
@@ -122,7 +122,7 @@ class GetStarred2MethodTest extends MockeryTestCase
                 Mockery::on(
                     function (Traversable $data): bool {
                         $this->assertNotEmpty(
-                            iterator_to_array($data)
+                            iterator_to_array($data),
                         );
                         return true;
                     },
@@ -130,7 +130,7 @@ class GetStarred2MethodTest extends MockeryTestCase
                 Mockery::on(
                     function (Traversable $data): bool {
                         $this->assertNotEmpty(
-                            iterator_to_array($data)
+                            iterator_to_array($data),
                         );
                         return true;
                     },
@@ -145,8 +145,8 @@ class GetStarred2MethodTest extends MockeryTestCase
                 $this->subject,
                 $dataProvider,
                 ['musicFolderId' => $musicFolderId],
-                []
-            )
+                [],
+            ),
         );
     }
 }

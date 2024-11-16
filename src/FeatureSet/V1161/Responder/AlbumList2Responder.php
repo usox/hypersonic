@@ -8,7 +8,7 @@ use AaronDDM\XMLBuilder\XMLArray;
 use Traversable;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class AlbumList2Responder implements FormattedResponderInterface
+final readonly class AlbumList2Responder implements FormattedResponderInterface
 {
     /**
      * @param Traversable<array{
@@ -23,7 +23,7 @@ final class AlbumList2Responder implements FormattedResponderInterface
      * }> $albumList
      */
     public function __construct(
-        private readonly Traversable $albumList,
+        private Traversable $albumList,
     ) {
     }
 
@@ -37,10 +37,10 @@ final class AlbumList2Responder implements FormattedResponderInterface
                     $XMLArray->add(
                         'album',
                         null,
-                        $album
+                        $album,
                     );
                 }
-            }
+            },
         );
     }
 

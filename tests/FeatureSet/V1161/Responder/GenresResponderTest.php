@@ -44,7 +44,7 @@ class GenresResponderTest extends MockeryTestCase
                 Mockery::on(static function (callable $loop) use ($XMLArray): bool {
                     $loop($XMLArray);
                     return true;
-                })
+                }),
             );
         $XMLArray->shouldReceive('add')
             ->with(
@@ -53,7 +53,7 @@ class GenresResponderTest extends MockeryTestCase
                 [
                     'albumCount' => $this->albumCount,
                     'songCount' => $this->songCount,
-                ]
+                ],
             )
             ->once();
 
@@ -68,14 +68,14 @@ class GenresResponderTest extends MockeryTestCase
 
         $this->assertSame(
             ['genres' => ['genre' => $this->genres]],
-            $data
+            $data,
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

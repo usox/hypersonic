@@ -82,14 +82,14 @@ class HyperSonicTest extends MockeryTestCase
             ->with(
                 $response,
                 ErrorCodeEnum::WRONG_USERNAME_OR_PASSWORD,
-                $errorMessage
+                $errorMessage,
             )
             ->once()
             ->andReturn($response);
 
         $this->assertSame(
             $response,
-            call_user_func($this->subject, $request, $response, [])
+            call_user_func($this->subject, $request, $response, []),
         );
     }
 
@@ -141,7 +141,7 @@ class HyperSonicTest extends MockeryTestCase
 
         $this->assertSame(
             $response,
-            $hypersonic->run($request, $response, ['methodName' => 'snafu'])
+            $hypersonic->run($request, $response, ['methodName' => 'snafu']),
         );
     }
 
@@ -184,7 +184,7 @@ class HyperSonicTest extends MockeryTestCase
             ->withNoArgs()
             ->once()
             ->andReturn([
-                $methodName => static fn () => $method,
+                $methodName => static fn (): \Closure => $method,
             ]);
 
         $request->shouldReceive('getQueryParams')
@@ -203,7 +203,7 @@ class HyperSonicTest extends MockeryTestCase
 
         $this->assertSame(
             $response,
-            $hypersonic->run($request, $response, ['methodName' => $methodName])
+            $hypersonic->run($request, $response, ['methodName' => $methodName]),
         );
     }
 
@@ -215,7 +215,7 @@ class HyperSonicTest extends MockeryTestCase
                 Mockery::mock(FeatureSetFactoryInterface::class),
                 Mockery::mock(AuthenticationProviderInterface::class),
                 [],
-            )
+            ),
         );
     }
 }

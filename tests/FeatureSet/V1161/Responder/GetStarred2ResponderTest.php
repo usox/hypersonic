@@ -20,7 +20,7 @@ class GetStarred2ResponderTest extends Mockery\Adapter\Phpunit\MockeryTestCase
     {
         $this->subject = new GetStarred2Responder(
             new ArrayIterator([$this->song]),
-            new ArrayIterator([$this->album])
+            new ArrayIterator([$this->album]),
         );
     }
 
@@ -42,7 +42,7 @@ class GetStarred2ResponderTest extends Mockery\Adapter\Phpunit\MockeryTestCase
                 Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
-                })
+                }),
             )
             ->once();
 
@@ -60,14 +60,14 @@ class GetStarred2ResponderTest extends Mockery\Adapter\Phpunit\MockeryTestCase
                 'album' => [$this->album],
                 'song' => [$this->song],
             ],
-            $data['starred2']
+            $data['starred2'],
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

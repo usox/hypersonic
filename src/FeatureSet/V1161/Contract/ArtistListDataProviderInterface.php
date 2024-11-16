@@ -24,6 +24,6 @@ interface ArtistListDataProviderInterface extends V1161DataProviderInterface
      * }>
      */
     public function getArtists(
-        ?string $musicFolderId
+        ?string $musicFolderId,
     ): iterable;
 }

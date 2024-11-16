@@ -59,7 +59,7 @@ class GetLicenseMethodTest extends MockeryTestCase
 
         $this->assertSame(
             $responder,
-            call_user_func($this->subject, $dataProvider, [], [])
+            call_user_func($this->subject, $dataProvider, [], []),
         );
     }
 }

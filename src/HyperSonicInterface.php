@@ -15,6 +15,6 @@ interface HyperSonicInterface
     public function run(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        array $args
+        array $args,
     ): ResponseInterface;
 }

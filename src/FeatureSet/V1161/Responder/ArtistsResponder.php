@@ -7,7 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 use AaronDDM\XMLBuilder\XMLArray;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class ArtistsResponder implements FormattedResponderInterface
+final readonly class ArtistsResponder implements FormattedResponderInterface
 {
     /**
      * @param array{
@@ -26,7 +26,7 @@ final class ArtistsResponder implements FormattedResponderInterface
      * } $artistList
      */
     public function __construct(
-        private readonly array $artistList
+        private array $artistList,
     ) {
     }
 
@@ -45,13 +45,13 @@ final class ArtistsResponder implements FormattedResponderInterface
                                 $XMLArray->add(
                                     'artist',
                                     null,
-                                    $artist
+                                    $artist,
                                 );
                             }
-                        }
+                        },
                     );
                 }
-            }
+            },
         );
     }
 

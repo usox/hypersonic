@@ -20,14 +20,14 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * @see http://www.subsonic.org/pages/api.jsp#getAlbumList2
  */
-final class GetAlbumList2Method implements V1161MethodInterface
+final readonly class GetAlbumList2Method implements V1161MethodInterface
 {
     /**
      * List of allowed types for ordering
      *
      * @var string[]
      */
-    private const ORDER_TYPES = [
+    private const array ORDER_TYPES = [
         'random',
         'newest',
         'frequent',
@@ -42,15 +42,15 @@ final class GetAlbumList2Method implements V1161MethodInterface
     /**
      * @var int
      */
-    private const DEFAULT_LIMIT = 10;
+    private const int DEFAULT_LIMIT = 10;
 
     /**
      * @var int
      */
-    private const MAX_LIMIT = 500;
+    private const int MAX_LIMIT = 500;
 
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -76,7 +76,7 @@ final class GetAlbumList2Method implements V1161MethodInterface
 
         if (!in_array($type, self::ORDER_TYPES, true)) {
             throw new MethodCallFailedException(
-                ErrorCodeEnum::MISSING_PARAMETER
+                ErrorCodeEnum::MISSING_PARAMETER,
             );
         }
 
@@ -88,7 +88,7 @@ final class GetAlbumList2Method implements V1161MethodInterface
 
             if ($fromYear === null || $toYear === null) {
                 throw new MethodCallFailedException(
-                    ErrorCodeEnum::MISSING_PARAMETER
+                    ErrorCodeEnum::MISSING_PARAMETER,
                 );
             }
 
@@ -99,7 +99,7 @@ final class GetAlbumList2Method implements V1161MethodInterface
             $genre = $queryParams['genre'] ?? null;
             if ($genre === null) {
                 throw new MethodCallFailedException(
-                    ErrorCodeEnum::MISSING_PARAMETER
+                    ErrorCodeEnum::MISSING_PARAMETER,
                 );
             }
 
@@ -115,7 +115,7 @@ final class GetAlbumList2Method implements V1161MethodInterface
         );
 
         return $this->responderFactory->createAlbumList2Responder(
-            $this->transformAlbums($albumList)
+            $this->transformAlbums($albumList),
         );
     }
 

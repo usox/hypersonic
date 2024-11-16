@@ -8,7 +8,7 @@ use AaronDDM\XMLBuilder\XMLArray;
 use Traversable;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class GetRandomSongsResponder implements FormattedResponderInterface
+final readonly class GetRandomSongsResponder implements FormattedResponderInterface
 {
     /**
      * @param Traversable<array{
@@ -26,7 +26,7 @@ final class GetRandomSongsResponder implements FormattedResponderInterface
      * }> $songs
      */
     public function __construct(
-        private readonly Traversable $songs,
+        private Traversable $songs,
     ) {
     }
 
@@ -40,10 +40,10 @@ final class GetRandomSongsResponder implements FormattedResponderInterface
                     $XMLArray->add(
                         'song',
                         null,
-                        $song
+                        $song,
                     );
                 }
-            }
+            },
         );
     }
 

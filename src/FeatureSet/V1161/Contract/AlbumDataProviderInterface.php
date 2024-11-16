@@ -37,6 +37,6 @@ interface AlbumDataProviderInterface extends V1161DataProviderInterface
      * }
      */
     public function getAlbum(
-        string $albumId
+        string $albumId,
     ): ?array;
 }

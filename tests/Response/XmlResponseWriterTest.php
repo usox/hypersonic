@@ -69,7 +69,7 @@ class XmlResponseWriterTest extends MockeryTestCase
                     'xmlns' => 'http://subsonic.org/restapi',
                     'status' => 'ok',
                     'version' => $this->apiVersion,
-                ]
+                ],
             )
             ->once()
             ->andReturnSelf();
@@ -83,7 +83,7 @@ class XmlResponseWriterTest extends MockeryTestCase
 
         $this->assertSame(
             $response,
-            $this->subject->write($response, $responder)
+            $this->subject->write($response, $responder),
         );
     }
 
@@ -126,7 +126,7 @@ class XmlResponseWriterTest extends MockeryTestCase
                     'xmlns' => 'http://subsonic.org/restapi',
                     'status' => 'failed',
                     'version' => $this->apiVersion,
-                ]
+                ],
             )
             ->once()
             ->andReturnSelf();
@@ -134,7 +134,7 @@ class XmlResponseWriterTest extends MockeryTestCase
             ->with(
                 'error',
                 null,
-                ['code' => $errorCode->value, 'message' => $message]
+                ['code' => $errorCode->value, 'message' => $message],
             )
             ->once()
             ->andReturnSelf();
@@ -144,7 +144,7 @@ class XmlResponseWriterTest extends MockeryTestCase
 
         $this->assertSame(
             $response,
-            $this->subject->writeError($response, $errorCode, $message)
+            $this->subject->writeError($response, $errorCode, $message),
         );
     }
 }

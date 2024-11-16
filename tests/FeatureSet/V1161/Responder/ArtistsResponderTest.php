@@ -48,7 +48,7 @@ class ArtistsResponderTest extends MockeryTestCase
                 Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
-                })
+                }),
             )
             ->once();
 
@@ -59,7 +59,7 @@ class ArtistsResponderTest extends MockeryTestCase
                 Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
-                })
+                }),
             )
             ->once();
 
@@ -74,14 +74,14 @@ class ArtistsResponderTest extends MockeryTestCase
 
         $this->assertSame(
             $this->artistList,
-            $data['artists']
+            $data['artists'],
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

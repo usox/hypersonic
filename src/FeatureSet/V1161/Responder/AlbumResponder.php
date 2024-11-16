@@ -7,7 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 use AaronDDM\XMLBuilder\XMLArray;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class AlbumResponder implements FormattedResponderInterface
+final readonly class AlbumResponder implements FormattedResponderInterface
 {
     /**
      * @param array{
@@ -38,8 +38,8 @@ final class AlbumResponder implements FormattedResponderInterface
      * }> $songs
      */
     public function __construct(
-        private readonly array $album,
-        private readonly array $songs,
+        private array $album,
+        private array $songs,
     ) {
     }
 
@@ -54,7 +54,7 @@ final class AlbumResponder implements FormattedResponderInterface
             $albumNode->add(
                 'song',
                 null,
-                $song
+                $song,
             );
         }
 

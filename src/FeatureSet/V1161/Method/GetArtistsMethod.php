@@ -15,10 +15,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * @see http://www.subsonic.org/pages/api.jsp#getArtists
  */
-final class GetArtistsMethod implements V1161MethodInterface
+final readonly class GetArtistsMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -79,7 +79,7 @@ final class GetArtistsMethod implements V1161MethodInterface
             [
                 'ignoredArticles' => implode(' ', $artistListDataProvider->getIgnoredArticles()),
                 'index' => $data,
-            ]
+            ],
         );
     }
 }

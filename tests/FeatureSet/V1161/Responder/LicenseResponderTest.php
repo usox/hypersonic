@@ -17,7 +17,7 @@ class LicenseResponderTest extends MockeryTestCase
     protected function setUp(): void
     {
         $this->subject = new LicenseResponder(
-            $this->licenseData
+            $this->licenseData,
         );
     }
 
@@ -40,14 +40,14 @@ class LicenseResponderTest extends MockeryTestCase
 
         $this->assertSame(
             $this->licenseData,
-            $data['license']
+            $data['license'],
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

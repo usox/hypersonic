@@ -51,14 +51,14 @@ class ArtistResponderTest extends MockeryTestCase
 
         $this->assertSame(
             [...$this->artist, 'album' => $this->albums],
-            $data['artist']
+            $data['artist'],
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

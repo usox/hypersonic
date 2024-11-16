@@ -14,10 +14,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `getMusicFolders.view` method
  */
-final class GetMusicFoldersMethod implements V1161MethodInterface
+final readonly class GetMusicFoldersMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -30,10 +30,10 @@ final class GetMusicFoldersMethod implements V1161MethodInterface
     public function __invoke(
         MusicFolderListDataProviderInterface $dataProvider,
         array $queryParams,
-        array $args
+        array $args,
     ): ResponderInterface {
         return $this->responderFactory->createMusicFoldersResponder(
-            $dataProvider->getMusicFolders()
+            $dataProvider->getMusicFolders(),
         );
     }
 }

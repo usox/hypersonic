@@ -44,7 +44,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
     public function writeError(
         ResponseInterface $response,
         ErrorCodeEnum $errorCode,
-        string $message = ''
+        string $message = '',
     ): ResponseInterface {
         $this->xmlBuilder->createXMLArray()
             ->start(
@@ -53,12 +53,12 @@ final class XmlResponseWriter implements ResponseWriterInterface
                     'xmlns' => 'http://subsonic.org/restapi',
                     'status' => 'failed',
                     'version' => $this->apiVersion,
-                ]
+                ],
             )
             ->add(
                 'error',
                 null,
-                ['code' => $errorCode->value, 'message' => $message]
+                ['code' => $errorCode->value, 'message' => $message],
             )
             ->end();
 
@@ -66,10 +66,10 @@ final class XmlResponseWriter implements ResponseWriterInterface
     }
 
     private function writeToResponse(
-        ResponseInterface $response
+        ResponseInterface $response,
     ): ResponseInterface {
         $response->getBody()->write(
-            $this->xmlBuilder->getXML()
+            $this->xmlBuilder->getXML(),
         );
 
         return $response->withHeader('Content-Type', 'application/xml');
@@ -85,7 +85,7 @@ final class XmlResponseWriter implements ResponseWriterInterface
                         'xmlns' => 'http://subsonic.org/restapi',
                         'status' => 'ok',
                         'version' => $this->apiVersion,
-                    ]
+                    ],
                 );
         }
 

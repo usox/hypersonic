@@ -19,7 +19,7 @@ class ResponseWriterFactoryTest extends MockeryTestCase
     {
         $this->assertInstanceOf(
             XmlResponseWriter::class,
-            $this->subject->createXmlResponseWriter('6.6.6')
+            $this->subject->createXmlResponseWriter('6.6.6'),
         );
     }
 
@@ -27,7 +27,7 @@ class ResponseWriterFactoryTest extends MockeryTestCase
     {
         $this->assertInstanceOf(
             JsonResponseWriter::class,
-            $this->subject->createJsonResponseWriter('6.6.6')
+            $this->subject->createJsonResponseWriter('6.6.6'),
         );
     }
 }

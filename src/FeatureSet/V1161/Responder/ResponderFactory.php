@@ -27,7 +27,7 @@ final class ResponderFactory implements ResponderFactoryInterface
      * } $artistList
      */
     public function createArtistsResponder(
-        array $artistList
+        array $artistList,
     ): ResponderInterface {
         return new ArtistsResponder(
             $artistList,
@@ -42,7 +42,7 @@ final class ResponderFactory implements ResponderFactoryInterface
      * } $licenseData
      */
     public function createLicenseResponder(
-        array $licenseData
+        array $licenseData,
     ): ResponderInterface {
         return new LicenseResponder(
             $licenseData,
@@ -127,7 +127,7 @@ final class ResponderFactory implements ResponderFactoryInterface
     ): ResponderInterface {
         return new AlbumResponder(
             $album,
-            $songs
+            $songs,
         );
     }
 
@@ -142,7 +142,7 @@ final class ResponderFactory implements ResponderFactoryInterface
         array $genres,
     ): ResponderInterface {
         return new GenresResponder(
-            $genres
+            $genres,
         );
     }
 
@@ -153,10 +153,10 @@ final class ResponderFactory implements ResponderFactoryInterface
      * }> $musicFolders
      */
     public function createMusicFoldersResponder(
-        Traversable $musicFolders
+        Traversable $musicFolders,
     ): ResponderInterface {
         return new MusicFoldersResponder(
-            $musicFolders
+            $musicFolders,
         );
     }
 
@@ -188,7 +188,7 @@ final class ResponderFactory implements ResponderFactoryInterface
      * }> $albumList
      */
     public function createAlbumList2Responder(
-        Traversable $albumList
+        Traversable $albumList,
     ): ResponderInterface {
         return new AlbumList2Responder($albumList);
     }
@@ -226,7 +226,7 @@ final class ResponderFactory implements ResponderFactoryInterface
     ): ResponderInterface {
         return new GetStarred2Responder(
             $songs,
-            $albums
+            $albums,
         );
     }
 
@@ -246,10 +246,10 @@ final class ResponderFactory implements ResponderFactoryInterface
      * }> $songs
      */
     public function createRandomSongsResponder(
-        Traversable $songs
+        Traversable $songs,
     ): ResponderInterface {
         return new GetRandomSongsResponder(
-            $songs
+            $songs,
         );
     }
 }

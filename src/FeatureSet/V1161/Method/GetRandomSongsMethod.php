@@ -17,13 +17,13 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * @see http://www.subsonic.org/pages/api.jsp#getRandomSongs
  */
-final class GetRandomSongsMethod implements V1161MethodInterface
+final readonly class GetRandomSongsMethod implements V1161MethodInterface
 {
     /** @var int */
-    private const MAX_SONGS = 500;
+    private const int MAX_SONGS = 500;
 
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -71,9 +71,9 @@ final class GetRandomSongsMethod implements V1161MethodInterface
                     $limit,
                     $genre,
                     $fromYear,
-                    $toYear
-                )
-            )
+                    $toYear,
+                ),
+            ),
         );
     }
 

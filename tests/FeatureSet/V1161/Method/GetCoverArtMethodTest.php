@@ -47,7 +47,7 @@ class GetCoverArtMethodTest extends MockeryTestCase
 
         $this->assertSame(
             $responder,
-            call_user_func($this->subject, $dataProvider, ['id' => $id], [])
+            call_user_func($this->subject, $dataProvider, ['id' => $id], []),
         );
     }
 }

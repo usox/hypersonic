@@ -23,6 +23,6 @@ interface ResponseWriterInterface
     public function writeError(
         ResponseInterface $response,
         ErrorCodeEnum $errorCode,
-        string $message = ''
+        string $message = '',
     ): ResponseInterface;
 }

@@ -8,7 +8,7 @@ use AaronDDM\XMLBuilder\XMLArray;
 use Traversable;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class GetStarred2Responder implements FormattedResponderInterface
+final readonly class GetStarred2Responder implements FormattedResponderInterface
 {
     /**
      * @param Traversable<array{
@@ -38,8 +38,8 @@ final class GetStarred2Responder implements FormattedResponderInterface
      * }> $albums
      */
     public function __construct(
-        private readonly Traversable $songs,
-        private readonly Traversable $albums
+        private Traversable $songs,
+        private Traversable $albums,
     ) {
     }
 
@@ -53,7 +53,7 @@ final class GetStarred2Responder implements FormattedResponderInterface
                     $XMLArray->add(
                         'album',
                         null,
-                        $album
+                        $album,
                     );
                 }
 
@@ -61,10 +61,10 @@ final class GetStarred2Responder implements FormattedResponderInterface
                     $XMLArray->add(
                         'song',
                         null,
-                        $song
+                        $song,
                     );
                 }
-            }
+            },
         );
     }
 

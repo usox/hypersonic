@@ -31,6 +31,6 @@ interface ArtistDataProviderInterface extends V1161DataProviderInterface
      * }
      */
     public function getArtist(
-        string $artistId
+        string $artistId,
     ): ?array;
 }

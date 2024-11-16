@@ -39,6 +39,6 @@ interface GetStarred2DataProviderInterface extends V1161DataProviderInterface
      * }
      */
     public function getStarred(
-        ?string $musicFolderId
+        ?string $musicFolderId,
     ): array;
 }

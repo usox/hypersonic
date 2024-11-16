@@ -12,10 +12,10 @@ use Usox\HyperSonic\Authentication\Exception\UsernameMissingException;
 /**
  * Manages the authentication of subsonic api requests
  */
-final class AuthenticationManager implements AuthenticationManagerInterface
+final readonly class AuthenticationManager implements AuthenticationManagerInterface
 {
     public function __construct(
-        private readonly AuthenticationProviderInterface $authenticationProvider,
+        private AuthenticationProviderInterface $authenticationProvider,
     ) {
     }
 

@@ -1,16 +1,31 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
-    ->in(['src', 'tests'])
-;
-$config = new PhpCsFixer\Config();
-$config->setRules(
-    [
-        '@PSR12' => true,
-        '@PHP80Migration' => true,
-        'array_syntax' => ['syntax' => 'short'],
-        'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline', 'keep_multiple_spaces_after_comma' => false],
-    ]
-)->setFinder($finder);
+declare(strict_types=1);
 
-return $config;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+
+return (new PhpCsFixer\Config())
+    ->setRules(
+        [
+            '@PSR12' => true,
+            'array_syntax' => ['syntax' => 'short'],
+            'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline', 'keep_multiple_spaces_after_comma' => false],
+            'no_unused_imports' => true,
+            'ordered_imports' => [
+                'sort_algorithm' => 'alpha',
+                'imports_order' => ['const', 'class', 'function'],
+            ],
+            'fully_qualified_strict_types' => [
+                'import_symbols' => true,
+            ],
+            'trailing_comma_in_multiline' => [
+                'after_heredoc' => true,
+                'elements' => ['array_destructuring', 'arrays', 'parameters', 'arguments'],
+            ],
+        ],
+    )
+    ->setParallelConfig(ParallelConfigFactory::detect())
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(['src', 'tests'])
+    );

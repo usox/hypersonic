@@ -14,10 +14,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `getGenres.view` method
  */
-final class GetGenresMethod implements V1161MethodInterface
+final readonly class GetGenresMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -30,10 +30,10 @@ final class GetGenresMethod implements V1161MethodInterface
     public function __invoke(
         GenreListDataProviderInterface $dataProvider,
         array $queryParams,
-        array $args
+        array $args,
     ): ResponderInterface {
         return $this->responderFactory->createGenresResponder(
-            iterator_to_array($dataProvider->getGenres())
+            iterator_to_array($dataProvider->getGenres()),
         );
     }
 }

@@ -25,7 +25,7 @@ interface ResponderFactoryInterface
      * } $artistList
      */
     public function createArtistsResponder(
-        array $artistList
+        array $artistList,
     ): ResponderInterface;
 
     /**
@@ -36,7 +36,7 @@ interface ResponderFactoryInterface
      * } $licenseData
      */
     public function createLicenseResponder(
-        array $licenseData
+        array $licenseData,
     ): ResponderInterface;
 
     public function createPingResponder(): ResponderInterface;
@@ -124,7 +124,7 @@ interface ResponderFactoryInterface
      * }> $musicFolders
      */
     public function createMusicFoldersResponder(
-        Traversable $musicFolders
+        Traversable $musicFolders,
     ): ResponderInterface;
 
     /**
@@ -151,7 +151,7 @@ interface ResponderFactoryInterface
      * }> $albumList
      */
     public function createAlbumList2Responder(
-        Traversable $albumList
+        Traversable $albumList,
     ): ResponderInterface;
 
     /**
@@ -202,6 +202,6 @@ interface ResponderFactoryInterface
      * }> $songs
      */
     public function createRandomSongsResponder(
-        Traversable $songs
+        Traversable $songs,
     ): ResponderInterface;
 }

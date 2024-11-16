@@ -36,6 +36,6 @@ interface AlbumList2DataProviderInterface
         int $limit,
         int $offset,
         array $orderParameter,
-        ?string $musicFolderId
+        ?string $musicFolderId,
     ): Traversable;
 }

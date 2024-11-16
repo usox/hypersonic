@@ -13,21 +13,21 @@ use AaronDDM\XMLBuilder\XMLBuilder;
 final class ResponseWriterFactory implements ResponseWriterFactoryInterface
 {
     public function createXmlResponseWriter(
-        string $apiVersion
+        string $apiVersion,
     ): ResponseWriterInterface {
         return new XmlResponseWriter(
             new XMLBuilder(
-                new XMLWriterService()
+                new XMLWriterService(),
             ),
             $apiVersion,
         );
     }
 
     public function createJsonResponseWriter(
-        string $apiVersion
+        string $apiVersion,
     ): ResponseWriterInterface {
         return new JsonResponseWriter(
-            $apiVersion
+            $apiVersion,
         );
     }
 }

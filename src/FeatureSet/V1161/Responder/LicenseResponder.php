@@ -7,7 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 use AaronDDM\XMLBuilder\XMLArray;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class LicenseResponder implements FormattedResponderInterface
+final readonly class LicenseResponder implements FormattedResponderInterface
 {
     /**
      * @param array{
@@ -17,7 +17,7 @@ final class LicenseResponder implements FormattedResponderInterface
      * } $licenseData
      */
     public function __construct(
-        private readonly array $licenseData
+        private array $licenseData,
     ) {
     }
 
@@ -26,7 +26,7 @@ final class LicenseResponder implements FormattedResponderInterface
         $XMLArray->add(
             'license',
             null,
-            $this->licenseData
+            $this->licenseData,
         );
     }
 

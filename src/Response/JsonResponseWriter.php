@@ -10,10 +10,10 @@ use Usox\HyperSonic\Exception\ErrorCodeEnum;
 /**
  * Writes response data in json format
  */
-final class JsonResponseWriter implements ResponseWriterInterface
+final readonly class JsonResponseWriter implements ResponseWriterInterface
 {
     public function __construct(
-        private readonly string $apiVersion
+        private string $apiVersion,
     ) {
     }
 
@@ -22,7 +22,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
      */
     public function write(
         ResponseInterface $response,
-        FormattedResponderInterface $responder
+        FormattedResponderInterface $responder,
     ): ResponseInterface {
         $root = [
             'status' => 'ok',
@@ -33,7 +33,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
 
         return $this->writeToResponse(
             $response,
-            $root
+            $root,
         );
     }
 
@@ -43,7 +43,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
     public function writeError(
         ResponseInterface $response,
         ErrorCodeEnum $errorCode,
-        string $message = ''
+        string $message = '',
     ): ResponseInterface {
         return $this->writeToResponse(
             $response,
@@ -54,7 +54,7 @@ final class JsonResponseWriter implements ResponseWriterInterface
                     'code' => $errorCode->value,
                     'message' => $message,
                 ],
-            ]
+            ],
         );
     }
 
@@ -63,13 +63,13 @@ final class JsonResponseWriter implements ResponseWriterInterface
      */
     private function writeToResponse(
         ResponseInterface $response,
-        array $data
+        array $data,
     ): ResponseInterface {
         $response->getBody()->write(
             (string) json_encode(
                 ['subsonic-response' => $data],
-                JSON_PRETTY_PRINT
-            )
+                JSON_PRETTY_PRINT,
+            ),
         );
 
         return $response->withHeader('Content-Type', 'application/json');

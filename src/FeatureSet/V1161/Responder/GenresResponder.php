@@ -7,7 +7,7 @@ namespace Usox\HyperSonic\FeatureSet\V1161\Responder;
 use AaronDDM\XMLBuilder\XMLArray;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class GenresResponder implements FormattedResponderInterface
+final readonly class GenresResponder implements FormattedResponderInterface
 {
     /**
      * @param array<array{
@@ -17,7 +17,7 @@ final class GenresResponder implements FormattedResponderInterface
      * }> $genres
      */
     public function __construct(
-        private readonly array $genres
+        private array $genres,
     ) {
     }
 
@@ -37,7 +37,7 @@ final class GenresResponder implements FormattedResponderInterface
                         ],
                     );
                 }
-            }
+            },
         );
     }
 

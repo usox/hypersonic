@@ -16,10 +16,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `ping.view` method
  */
-final class PingMethod implements V1161MethodInterface
+final readonly class PingMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -32,7 +32,7 @@ final class PingMethod implements V1161MethodInterface
     public function __invoke(
         PingDataProviderInterface $dataProvider,
         array $queryParams,
-        array $args
+        array $args,
     ): ResponderInterface {
         if (!$dataProvider->isOk()) {
             throw new MethodCallFailedException(ErrorCodeEnum::GENERIC_ERROR);

@@ -15,10 +15,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `getArtist.view` method
  */
-final class GetArtistMethod implements V1161MethodInterface
+final readonly class GetArtistMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -39,7 +39,7 @@ final class GetArtistMethod implements V1161MethodInterface
 
         if ($artist === null) {
             throw new MethodCallFailedException(
-                ErrorCodeEnum::NOT_FOUND
+                ErrorCodeEnum::NOT_FOUND,
             );
         }
 
@@ -65,8 +65,8 @@ final class GetArtistMethod implements V1161MethodInterface
                     'year' => $album['year'] ?? '',
                     'genre' => $album['genre'] ?? '',
                 ],
-                $artist['albums']
-            )
+                $artist['albums'],
+            ),
         );
     }
 }

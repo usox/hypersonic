@@ -18,38 +18,30 @@ class FeatureSetFactoryTest extends TestCase
 
     public function testGetVersionReturnsValue(): void
     {
-        static::assertSame(
-            '1.16.1',
-            $this->subject->getVersion()
-        );
+        $this->assertSame('1.16.1', $this->subject->getVersion());
     }
 
-    public static function methodDataProvider(): array
+    public static function methodDataProvider(): \Iterator
     {
-        return [
-            ['ping.view', Method\PingMethod::class],
-            ['getAlbum.view', Method\GetAlbumMethod::class],
-            ['getAlbumList2.view', Method\GetAlbumList2Method::class],
-            ['getLicense.view', Method\GetLicenseMethod::class],
-            ['getArtists.view', Method\GetArtistsMethod::class],
-            ['getCoverArt.view', Method\GetCoverArtMethod::class],
-            ['getArtist.view', Method\GetArtistMethod::class],
-            ['getGenres.view', Method\GetGenresMethod::class],
-            ['getMusicFolders.view', Method\GetMusicFoldersMethod::class],
-            ['stream.view', Method\StreamMethod::class],
-            ['getStarred2.view', Method\GetStarred2Method::class],
-            ['getRandomSongs.view', Method\GetRandomSongsMethod::class],
-        ];
+        yield ['ping.view', Method\PingMethod::class];
+        yield ['getAlbum.view', Method\GetAlbumMethod::class];
+        yield ['getAlbumList2.view', Method\GetAlbumList2Method::class];
+        yield ['getLicense.view', Method\GetLicenseMethod::class];
+        yield ['getArtists.view', Method\GetArtistsMethod::class];
+        yield ['getCoverArt.view', Method\GetCoverArtMethod::class];
+        yield ['getArtist.view', Method\GetArtistMethod::class];
+        yield ['getGenres.view', Method\GetGenresMethod::class];
+        yield ['getMusicFolders.view', Method\GetMusicFoldersMethod::class];
+        yield ['stream.view', Method\StreamMethod::class];
+        yield ['getStarred2.view', Method\GetStarred2Method::class];
+        yield ['getRandomSongs.view', Method\GetRandomSongsMethod::class];
     }
 
     #[DataProvider('methodDataProvider')]
     public function testMethodCreation(
         string $apiMethod,
-        string $className
+        string $className,
     ): void {
-        static::assertInstanceOf(
-            $className,
-            $this->subject->getMethods()[$apiMethod]()
-        );
+        $this->assertInstanceOf($className, $this->subject->getMethods()[$apiMethod]());
     }
 }

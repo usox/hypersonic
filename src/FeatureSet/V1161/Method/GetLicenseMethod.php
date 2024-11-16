@@ -13,10 +13,10 @@ use Usox\HyperSonic\Response\ResponderInterface;
  *
  * This class covers the `getLicense.view` method
  */
-final class GetLicenseMethod implements V1161MethodInterface
+final readonly class GetLicenseMethod implements V1161MethodInterface
 {
     public function __construct(
-        private readonly ResponderFactoryInterface $responderFactory,
+        private ResponderFactoryInterface $responderFactory,
     ) {
     }
 
@@ -27,7 +27,7 @@ final class GetLicenseMethod implements V1161MethodInterface
     public function __invoke(
         LicenseDataProviderInterface $licenseDataProvider,
         array $queryParams,
-        array $args
+        array $args,
     ): ResponderInterface {
         return $this->responderFactory->createLicenseResponder([
             'valid' => $licenseDataProvider->isValid() ? 'true' : 'false',

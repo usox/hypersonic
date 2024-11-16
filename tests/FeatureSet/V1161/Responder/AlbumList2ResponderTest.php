@@ -18,7 +18,7 @@ class AlbumList2ResponderTest extends MockeryTestCase
     protected function setUp(): void
     {
         $this->subject = new AlbumList2Responder(
-            new ArrayIterator([$this->album])
+            new ArrayIterator([$this->album]),
         );
     }
 
@@ -37,7 +37,7 @@ class AlbumList2ResponderTest extends MockeryTestCase
                 Mockery::on(static function ($cb) use ($xmlArray): bool {
                     $cb($xmlArray);
                     return true;
-                })
+                }),
             )
             ->once();
 
@@ -52,14 +52,14 @@ class AlbumList2ResponderTest extends MockeryTestCase
 
         $this->assertSame(
             ['album' => [$this->album]],
-            $data['albumList2']
+            $data['albumList2'],
         );
     }
 
     public function testIsBinaryResponderReturnsFalse(): void
     {
         $this->assertFalse(
-            $this->subject->isBinaryResponder()
+            $this->subject->isBinaryResponder(),
         );
     }
 }

@@ -81,10 +81,7 @@ class GetRandomSongsMethodTest extends TestCase
             ]]))
             ->willReturn($result);
 
-        static::assertSame(
-            $result,
-            call_user_func($this->subject, $this->dataProvider, [], [])
-        );
+        $this->assertSame($result, call_user_func($this->subject, $this->dataProvider, [], []));
     }
 
     public function testInvokeReturnsDataWithCustomParams(): void
@@ -142,20 +139,17 @@ class GetRandomSongsMethodTest extends TestCase
                 ]]))
             ->willReturn($result);
 
-        static::assertSame(
-            $result,
-            call_user_func(
-                $this->subject,
-                $this->dataProvider,
-                [
-                    'musicFolderId' => $musicFolderId,
-                    'size' => '55555',
-                    'genre' => $genreFromRequest,
-                    'fromYear' => (string) $fromYear,
-                    'toYear' => (string) $toYear,
-                ],
-                []
-            )
-        );
+        $this->assertSame($result, call_user_func(
+            $this->subject,
+            $this->dataProvider,
+            [
+                'musicFolderId' => $musicFolderId,
+                'size' => '55555',
+                'genre' => $genreFromRequest,
+                'fromYear' => (string) $fromYear,
+                'toYear' => (string) $toYear,
+            ],
+            [],
+        ));
     }
 }

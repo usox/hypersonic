@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Usox\HyperSonic\FeatureSet\V1161\Method;
 
-use Cassandra\Date;
 use DateTime;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
@@ -128,14 +127,14 @@ class GetAlbumMethodTest extends MockeryTestCase
                     'albumId' => $albumId,
                     'artistId' => $artistId,
                     'playCount' => $playCount,
-                ]]
+                ]],
             )
             ->once()
             ->andReturn($responder);
 
         $this->assertSame(
             $responder,
-            call_user_func($this->subject, $dataProvider, ['id' => $albumId], [])
+            call_user_func($this->subject, $dataProvider, ['id' => $albumId], []),
         );
     }
 }

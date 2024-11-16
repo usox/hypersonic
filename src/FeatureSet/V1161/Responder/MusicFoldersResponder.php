@@ -8,7 +8,7 @@ use AaronDDM\XMLBuilder\XMLArray;
 use Traversable;
 use Usox\HyperSonic\Response\FormattedResponderInterface;
 
-final class MusicFoldersResponder implements FormattedResponderInterface
+final readonly class MusicFoldersResponder implements FormattedResponderInterface
 {
     /**
      * @param Traversable<array{
@@ -17,7 +17,7 @@ final class MusicFoldersResponder implements FormattedResponderInterface
      * }> $musicFolders
      */
     public function __construct(
-        private readonly Traversable $musicFolders
+        private Traversable $musicFolders,
     ) {
     }
 
@@ -34,10 +34,10 @@ final class MusicFoldersResponder implements FormattedResponderInterface
                         [
                             'name' => htmlspecialchars($musicFolder['name']),
                             'id' => $musicFolder['id'],
-                        ]
+                        ],
                     );
                 }
-            }
+            },
         );
     }
 

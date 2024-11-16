@@ -23,40 +23,40 @@ final class FeatureSetFactory implements FeatureSetFactoryInterface
     {
         return [
             'ping.view' => static fn (): Method\V1161MethodInterface => new Method\PingMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getLicense.view' => static fn (): Method\V1161MethodInterface => new Method\GetLicenseMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getAlbum.view' => static fn (): Method\V1161MethodInterface => new Method\GetAlbumMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getAlbumList2.view' => static fn (): Method\V1161MethodInterface => new Method\GetAlbumList2Method(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getArtists.view' => static fn (): Method\V1161MethodInterface => new Method\GetArtistsMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getCoverArt.view' => static fn (): Method\V1161MethodInterface => new Method\GetCoverArtMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getArtist.view' => static fn (): Method\V1161MethodInterface => new Method\GetArtistMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getGenres.view' => static fn (): Method\V1161MethodInterface => new Method\GetGenresMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getMusicFolders.view' => static fn (): Method\V1161MethodInterface => new Method\GetMusicFoldersMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'stream.view' => static fn (): Method\V1161MethodInterface => new Method\StreamMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getStarred2.view' => static fn (): Method\V1161MethodInterface => new Method\GetStarred2Method(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
             'getRandomSongs.view' => static fn (): Method\V1161MethodInterface => new Method\GetRandomSongsMethod(
-                new ResponderFactory()
+                new ResponderFactory(),
             ),
         ];
     }
